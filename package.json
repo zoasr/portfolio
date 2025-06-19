@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.0",
     "@astrojs/solid-js": "^5.1.0",
     "@fontsource-variable/pixelify-sans": "^5.2.6",
     "@iconify-json/pixelarticons": "^1.2.2",
