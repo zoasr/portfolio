@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@layer base {
+	:root {
+		--background: hsl(224 71.4% 4.1%); /* Darker, slightly bluer black */
+		--foreground: hsl(210 20% 98%);
+		--card: hsl(
+			224 71.4% 5.5%
+		); /* Slightly lighter than background for depth */
+		--card-foreground: hsl(210 20% 98%);
+		--popover: hsl(224 71.4% 4.1%);
+		--popover-foreground: hsl(210 20% 98%);
+		--primary: hsl(237, 100%, 60%); /* Neon Green */
+		--primary-foreground: hsl(
+			222.2 47.4% 1.2%
+		); /* Darker for contrast on green */
+		--secondary: hsl(215 27.9% 16.9%);
+		--secondary-foreground: hsl(210 20% 98%);
+		--muted: hsl(215 27.9% 16.9%);
+		--muted-foreground: hsl(217.9 10.6% 64.9%);
+		--accent: hsl(215 27.9% 16.9%);
+		--accent-foreground: hsl(210 20% 98%);
+		--destructive: hsl(0 62.8% 30.6%);
+		--destructive-foreground: hsl(210 20% 98%);
+		--border: hsl(215 27.9% 16.9%); /* Slightly more visible border */
+		--input: hsl(215 27.9% 16.9%);
+		--ring: hsl(138 92% 55%);
+		--radius: 0.5rem;
+
+		scroll-behavior: smooth;
+	}
+}
+
+@theme {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+		scroll-behavior: smooth;
+	}
+	::selection {
+		background-color: var(--primary);
+		color: var(--primary-foreground);
+	}
+}
+
+@layer components {
+	.section-title-underline {
+		@apply mt-3 w-24 h-1.5 bg-primary mx-auto rounded-full shadow-[0_0_10px_var(--color-primary)];
+	}
+	.futuristic-card {
+		@apply bg-card border-border/60 transition-all duration-300 hover:border-primary/70 hover:shadow-lg shadow-primary/10;
+	}
+	.futuristic-timeline-node {
+		@apply absolute left-1/2 w-5 h-5 bg-primary rounded-full -translate-x-1/2 mt-1 border-[3px] border-background shadow-[0_0_10px_3px_color-mix(in_hsl,_var(--color-primary)_50%,_transparent)];
+	}
+	.futuristic-timeline-line {
+		@apply absolute left-1/2 w-1 h-full bg-gradient-to-b from-primary/50 via-primary/20 to-transparent -translate-x-1/2;
+	}
+}
