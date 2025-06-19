@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon/components";
+import Logo from "@/images/logo.svg";
+---
+
+<footer class="w-full border-t border-border/40 bg-card">
+	<div class="container mx-auto px-4 py-10">
+		<div
+			class="flex flex-col md:flex-row justify-between items-center gap-8"
+		>
+			<div class="flex items-center gap-2 text-muted-foreground">
+				<Logo class="size-[clamp(2rem,10vw,4rem)]" />
+				<span class="font-bold text-xl tracking-tight"> zoasr </span>
+			</div>
+			<div class="flex gap-6">
+				<a
+					href="https://github.com/zoasr"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
+					aria-label="GitHub Profile"
+				>
+					<Icon name="pixelarticons:github" class="h-6 w-6" />
+				</a>
+				<a
+					href="https://linkedin.com/in/zoasr"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
+					aria-label="LinkedIn Profile"
+				>
+					<Icon name="ri:linkedin-line" class="h-6 w-6" />
+				</a>
+				<a
+					href="mailto:zeyadber@gmail.com"
+					class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
+					aria-label="Email Zeyad"
+				>
+					<Icon name="pixelarticons:mail" class="h-6 w-6" />
+				</a>
+			</div>
+			<p class="text-sm text-muted-foreground text-center md:text-left">
+				© {new Date().getFullYear()} zoasr.{" "}
+				<br class="sm:hidden" /> All rights reserved.
+				<br />
+				<span class="text-xs">
+					Crafted with Astro & Tailwind CSS.
+				</span>
+			</p>
+		</div>
+	</div>
+</footer>

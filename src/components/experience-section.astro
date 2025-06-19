@@ -1,0 +1,123 @@
+---
+const experiences = [
+	{
+		company: "Recyclink, Machlist",
+		role: "Front-End Web Developer",
+		period: "Feb 2024 - May 2024",
+		location: "Egypt",
+		description:
+			"Worked as a Front-End Web developer designing and managing content for an industrial company's new Websites; Built and maintained using the Astro framework. Projects: Machlist, Recyclink.",
+		tags: ["Astro", "Frontend", "UI/UX", "Content Management"],
+	},
+	{
+		company: "Military Service",
+		role: "PHP (XAMPP) Full Stack Developer",
+		period: "July 2024 - June 2025 (Expected)",
+		location: "Egypt",
+		description:
+			"Developed and maintained a full stack web app using the XAMPP stack, hosted on a local network during my military service.",
+		tags: ["PHP", "XAMPP", "Full Stack", "MySQL", "Apache"],
+	},
+	{
+		company: "@lastfm-viewer (Personal Project)", // Using title from CV's project section for consistency if it's the same
+		role: "Maintainer",
+		period: "December 2023 – Present",
+		location: "Remote",
+		description:
+			"Maintainer of @lastfm-viewer, a collection of UI web components hosted on npm to view recent scrobbles for a Last.fm user, built for React, Solid, and Svelte frameworks.",
+		tags: [
+			"React",
+			"Solid.js",
+			"Svelte",
+			"NPM",
+			"Open Source",
+			"API Integration",
+		],
+	},
+];
+---
+
+<section id="experience" class="w-full py-16 md:py-24">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-16 relative">
+			<h2
+				class="relative text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
+			>
+				My Journey
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 100 100"
+					class="absolute inset-0 w-full h-full"
+				>
+					<rect
+						x="0"
+						y="0"
+						width="100%"
+						height="100"
+						fill="#0000"
+						stroke="var(--primary)"
+						stroke-width="1"></rect>
+				</svg>
+			</h2>
+			<div class="section-title-underline"></div>
+		</div>
+		<div class="relative max-w-3xl mx-auto">
+			<div class="futuristic-timeline-line"></div>
+			{
+				experiences.map((exp, index) => (
+					<div class="relative mb-12 group">
+						<div class="futuristic-timeline-node group-hover:shadow-[0_0_15px_3px_var(--primary)] transition-shadow" />
+						<div
+							class={`flex items-start ${
+								index % 2 === 0
+									? "md:flex-row-reverse md:text-right"
+									: "md:text-left"
+							}`}
+						>
+							<div class="hidden md:block w-1/2" />{" "}
+							{/* Spacer for desktop */}
+							<div class="w-full md:w-1/2 md:px-8 px-4 py-2">
+								<div class="futuristic-card p-6 rounded-lg relative z-10 ">
+									<p class="text-sm text-primary font-semibold">
+										{exp.period}
+									</p>
+									<h3 class="text-xl font-bold text-foreground mt-1">
+										{exp.role}
+									</h3>
+									<p class="text-lg font-medium text-muted-foreground">
+										{exp.company} -{" "}
+										<span class="text-sm">
+											{exp.location}
+										</span>
+									</p>
+									<p class="mt-3 text-sm text-muted-foreground">
+										{exp.description}
+									</p>
+									{exp.tags && exp.tags.length > 0 && (
+										<div class="mt-3 flex flex-wrap gap-2">
+											{exp.tags.map((tag) => (
+												<span class="card-tag border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
+													{tag}
+												</span>
+											))}
+										</div>
+									)}
+								</div>
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.card-tag {
+		box-shadow: inset 0 0 0 1px
+			color-mix(in hsl, var(--primary) 10%, transparent);
+	}
+	.card-tag:hover {
+		box-shadow: inset 0 -1px 0 1px color-mix(in hsl, var(--primary) 20%, transparent);
+	}
+</style>

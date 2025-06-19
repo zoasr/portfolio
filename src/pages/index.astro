@@ -1,16 +1,20 @@
 ---
-
+import HeroSection from "@/components/hero-section.astro";
+import AboutSection from "@/components/about-section.astro";
+import SkillsSection from "@/components/skills-section.astro";
+import ProjectsSection from "@/components/projects-section.astro";
+import ExperienceSection from "@/components/experience-section.astro";
+import Layout from "@/layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Portfolio</title>
-	</head>
-	<body>
-		<h1>Portfolio</h1>
-	</body>
-</html>
+<Layout title="zoasr's Portfolio">
+	<div class="flex flex-col min-h-screen bg-background">
+		<main class="flex-1">
+			<HeroSection />
+			<AboutSection />
+			<SkillsSection />
+			<ProjectsSection />
+			<ExperienceSection />
+		</main>
+	</div>
+</Layout>

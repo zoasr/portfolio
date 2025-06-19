@@ -1,0 +1,164 @@
+---
+import { Image } from "astro:assets";
+
+import { Icon } from "astro-icon/components";
+
+const projects = [
+	{
+		title: "supa-shop",
+		description:
+			"A modern, full-stack e-commerce platform built with React, TypeScript, and Supabase. Features real-time inventory, secure auth, and responsive design.",
+		image: "/placeholder/500x300.svg?text=supa-shop",
+		tags: [
+			"React",
+			"TailwindCSS",
+			"TanStack Router",
+			"i18n",
+			"Supabase",
+			"TypeScript",
+		],
+		liveUrl: null, // Not specified in CV
+		githubUrl: "https://github.com/zoasr/supa-shop",
+	},
+	{
+		title: "@lastfm-viewer",
+		description:
+			"UI web components (npm package) to view recent scrobbles for a Last.fm user. Built for React, Solid, and Svelte.",
+		image: "/placeholder/500x300.svg?text=@lastfm-viewer",
+		tags: ["React", "Solid.js", "Svelte", "NPM", "API", "Last.fm"],
+		liveUrl: "https://lastfm-viewer.vercel.app/",
+		githubUrl: "https://github.com/zoasr/lastfm-viewer", // CV implies this is the repo for the project
+	},
+	{
+		title: "libmatrix",
+		description:
+			"A lightweight, open-source C++ library for various matrix computations including creation, basic operations, and advanced functions.",
+		image: "/placeholder/500x300.svg?text=libmatrix",
+		tags: ["C++", "Library", "Mathematics", "Open Source"],
+		liveUrl: null,
+		githubUrl: "https://github.com/ZOASR/libmatrix",
+	},
+	{
+		title: "FishBot (Graduation Project)",
+		description:
+			"Fully automated monitoring system for fish farms with real-time analytics for water quality, fish health, and automated controls.",
+		image: "/placeholder/500x300.svg?text=FishBot",
+		tags: ["IoT", "Arduino", "RaspberryPi", "MQTT", "C++", "Programming"],
+		liveUrl: null,
+		githubUrl: null,
+	},
+	{
+		title: "Smart Home System",
+		description:
+			"Comprehensive smart home project integrating IoT devices and automation for enhanced convenience, energy efficiency, and security.",
+		image: "/placeholder/500x300.svg?text=SmartHome",
+		tags: ["Smart Home", "IoT", "Arduino", "C++", "Programming"],
+		liveUrl: null,
+		githubUrl: null,
+	},
+	{
+		title: "Recyclink",
+		description:
+			"Industrial company website. Designed and managed content, built with Astro.",
+		image: "/placeholder/500x300.svg?text=Recyclink",
+		tags: ["Astro", "Frontend", "Content Management"],
+		liveUrl: "https://recyc-link.vercel.app/en/",
+		githubUrl: "https://github.com/zoasr/recyc-link",
+	},
+	{
+		title: "Machlist",
+		description:
+			"Industrial company website. Designed and managed content, built with Astro.",
+		image: "/placeholder/500x300.svg?text=Machlist",
+		tags: ["Astro", "Frontend", "UI/UX"],
+		liveUrl: "https://machlist.vercel.app/en/",
+		githubUrl: "https://github.com/zoasr/machlist",
+	},
+];
+---
+
+<section id="projects" class="w-full py-16 md:py-24 bg-card">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-16">
+			<h2
+				class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
+			>
+				My Projects
+			</h2>
+			<div class="section-title-underline"></div>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{
+				projects.map((project) => (
+					<div class="futuristic-card flex flex-col overflow-hidden rounded-lg group">
+						<div class="relative overflow-hidden">
+							<Image
+								src={project.image || "/placeholder.svg"}
+								alt={project.title}
+								width={500}
+								height={300}
+								class="object-cover w-full h-52 transition-transform duration-500 group-hover:scale-105"
+							/>
+							<div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
+						</div>
+						<div class="p-6 flex flex-col flex-grow">
+							<h3 class="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+								{project.title}
+							</h3>
+							<p class="text-muted-foreground text-sm flex-grow mb-4">
+								{project.description}
+							</p>
+							<div class="mb-4 flex flex-wrap gap-2">
+								{project.tags.map((tag) => (
+									<span class="card-tag border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
+										{tag}
+									</span>
+								))}
+							</div>
+						</div>
+						<div class="p-6 pt-0 mt-auto flex justify-end gap-4">
+							{project.githubUrl && (
+								<a
+									href={project.githubUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
+									aria-label={`${project.title} GitHub repository`}
+								>
+									<Icon
+										name="pixelarticons:github"
+										class="h-6 w-6"
+									/>
+								</a>
+							)}
+							{project.liveUrl && (
+								<a
+									href={project.liveUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
+									aria-label={`${project.title} live demo`}
+								>
+									<Icon
+										name="pixelarticons:external-link"
+										class={"h-6 w-6"}
+									/>
+								</a>
+							)}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.card-tag {
+		box-shadow: inset 0 0 0 1px
+			color-mix(in hsl, var(--primary) 10%, transparent);
+	}
+	.card-tag:hover {
+		box-shadow: inset 0 -1px 0 1px color-mix(in hsl, var(--primary) 20%, transparent);
+	}
+</style>

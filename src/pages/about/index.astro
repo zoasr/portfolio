@@ -1,0 +1,218 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Footer from "@/components/footer.astro";
+---
+
+<Layout title="Details">
+	<div class="flex flex-col min-h-screen bg-background">
+		<main class="flex-1 container mx-auto px-4 py-16 md:py-24">
+			<div class="max-w-4xl mx-auto">
+				<a
+					href="/#about"
+					class="inline-flex items-center gap-2 text-primary hover:underline mb-8 group"
+				>
+					<!-- <ArrowLeft
+						size={18}
+						class="transition-transform group-hover:-translate-x-1"
+					/> -->
+					<Icon
+						name="pixelarticons:arrow-left"
+						class="transition-transform group-hover:-translate-x-1"
+					/>
+					Back to Home
+				</a>
+				<div class="grid md:grid-cols-3 gap-8 md:gap-12 items-start">
+					<div class="md:col-span-1">
+						<Image
+							src="https://avatars.githubusercontent.com/u/44146518?v=2"
+							alt="zoasr"
+							width={300}
+							height={300}
+							class="rounded-lg object-cover w-full h-auto shadow-lg shadow-primary/20 border-2 border-primary/30"
+						/>
+						<div class="mt-6 space-y-3 text-sm">
+							<h3
+								class="text-lg font-semibold text-foreground mb-2"
+							>
+								Contact & Links
+							</h3>
+							<p
+								class="flex items-center gap-2 text-muted-foreground"
+							>
+								<Icon
+									name="pixelarticons:pin"
+									class="text-primary flex-shrink-0"
+								/>
+								Giza - Egypt
+							</p>
+							<p
+								class="flex items-center gap-2 text-muted-foreground"
+							>
+								<Icon
+									name="pixelarticons:device-phone"
+									class="text-primary flex-shrink-0"
+								/>
+								+201553595742
+							</p>
+							<p
+								class="flex items-center gap-2 text-muted-foreground"
+							>
+								<Icon
+									name="pixelarticons:mail"
+									class="text-primary flex-shrink-0"
+								/>
+								<a
+									href="mailto:zeyadber@gmail.com"
+									class="hover:text-primary break-all"
+								>
+									zeyadber@gmail.com
+								</a>
+							</p>
+							<p
+								class="flex items-center gap-2 text-muted-foreground"
+							>
+								<Icon
+									name="pixelarticons:github"
+									class="text-primary flex-shrink-0"
+								/>
+								<a
+									href="https://github.com/zoasr"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="hover:text-primary break-all"
+								>
+									github.com/zoasr
+								</a>
+							</p>
+							<p
+								class="flex items-center gap-2 text-muted-foreground"
+							>
+								<Icon
+									name="ri:linkedin-line"
+									class="text-primary flex-shrink-0"
+								/>
+								<a
+									href="https://linkedin.com/in/zoasr"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="hover:text-primary break-all"
+								>
+									linkedin.com/in/zeyad-sherif
+								</a>
+							</p>
+						</div>
+					</div>
+					<div class="md:col-span-2 space-y-6">
+						<h1
+							class="text-4xl md:text-5xl font-bold text-foreground tracking-tighter"
+						>
+							Zeyad Sherif
+						</h1>
+						<p class="text-xl font-semibold text-primary">
+							Front-End Web Developer
+						</p>
+						<p class="text-lg text-muted-foreground">
+							After a career pivot from Mechatronics Engineer to
+							Web Developer, I'm thrilled to bring my analytical
+							mind and passion for problem-solving to the world of
+							web development.
+						</p>
+
+						<div class="space-y-4">
+							<h3
+								class="text-2xl font-semibold text-foreground flex items-center gap-2"
+							>
+								<Icon
+									name="streamline-pixel:school-science-graduation-cap"
+									class="text-primary"
+								/>
+
+								Education
+							</h3>
+							<div class="pl-2 border-l-2 border-primary/50">
+								<p class="font-medium">
+									Bachelor of Science in Mechatronics
+									Engineering
+								</p>
+								<p class="text-muted-foreground">
+									October 6th University (2018 - 2023)
+								</p>
+								<p class="text-sm text-muted-foreground">
+									GPA: 3.25
+								</p>
+								<p class="text-sm text-muted-foreground">
+									Relevant Coursework: Computer Programming,
+									Electronics, Robotics
+								</p>
+							</div>
+						</div>
+
+						<div class="space-y-4">
+							<h3
+								class="text-2xl font-semibold text-foreground flex items-center gap-2"
+							>
+								<Icon
+									name="pixelarticons:briefcase"
+									class="text-primary"
+								/>
+								Volunteering
+							</h3>
+							<div class="pl-2 border-l-2 border-primary/50">
+								<p class="font-medium">Technical Director</p>
+								<p class="text-muted-foreground">
+									IEEE (O6U Student Branch) - Egypt (2022)
+								</p>
+								<p class="text-sm text-muted-foreground">
+									Acted as a technical director in a campus
+									IEEE student activity.
+								</p>
+							</div>
+						</div>
+
+						<div class="space-y-4">
+							<h3
+								class="text-2xl font-semibold text-foreground flex items-center gap-2"
+							>
+								<Icon
+									name="pixelarticons:lightbulb"
+									class="text-primary"
+								/>
+								Interests
+							</h3>
+							<div class="flex flex-wrap gap-2">
+								{
+									[
+										"Web Development",
+										"Maths",
+										"Art",
+										"Programming",
+									].map((interest) => (
+										<span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+											{interest}
+										</span>
+									))
+								}
+							</div>
+						</div>
+						<div class="space-y-4">
+							<h3
+								class="text-2xl font-semibold text-foreground flex items-center gap-2"
+							>
+								<Icon
+									name="pixelarticons:heart"
+									class="text-primary"
+								/>
+								Languages
+							</h3>
+							<p class="text-muted-foreground">
+								Arabic (Native), English (Proficient)
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</Layout>
