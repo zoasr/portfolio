@@ -46,7 +46,7 @@ const ThemeSwitcher = (props: { theme: Theme }) => {
 						}
 					</SelectItem>
 				)}
-				defaultValue={"system"}
+				defaultValue={props.theme}
 				placeholder="Select a theme"
 				onChange={(value) => {
 					if (value === "system") {
