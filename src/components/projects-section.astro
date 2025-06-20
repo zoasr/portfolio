@@ -98,9 +98,10 @@ const projects = [
 						<div class="relative overflow-hidden">
 							{project.image !== null && (
 								<>
-									<Image
+									<img
 										src={
-											project.image || "/placeholder.svg"
+											project.image.src ||
+											"/placeholder.svg"
 										}
 										alt={project.title}
 										width={500}
