@@ -12,6 +12,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "$/components/ui/*": [
+        "./$/components/ui/*"
       ]
     },
     "jsx": "preserve",
