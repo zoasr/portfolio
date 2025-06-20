@@ -19,6 +19,27 @@ const theme = Astro.cookies.get("theme")?.value;
 		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Hi, I'm zoasr, i design, build and animate web applications and websites"
+		/>
+		<meta name="keywords" content="zoasr, portfolio" />
+		<meta name="author" content="zoasr" />
+		<meta property="og:title" content="zoasr's Portfolio" />
+		<meta
+			property="og:description"
+			content="Hi, I'm zoasr, i design, build and animate web applications and websites"
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://zoasr-portfolio.pages.dev/" />
+		<meta property="og:image" content="/og-image.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="zoasr's Portfolio" />
+		<meta
+			name="twitter:description"
+			content="Hi, I'm zoasr, i design, build and animate web applications and websites"
+		/>
+		<meta name="twitter:image" content="/og-image.png" />
 		<title>{title}</title>
 		<ClientRouter />
 	</head>

@@ -2,13 +2,17 @@
 import { Image } from "astro:assets";
 
 import { Icon } from "astro-icon/components";
+import lastfmViewer from "@/images/@lastfm-viewer.png";
+import machlist from "@/images/machlist.png";
+import recyclink from "@/images/recyclink.png";
+import supaShop from "@/images/supa-shop.png";
 
 const projects = [
 	{
 		title: "supa-shop",
 		description:
 			"A modern, full-stack e-commerce platform built with React, TypeScript, and Supabase. Features real-time inventory, secure auth, and responsive design.",
-		image: "/placeholder/500x300.svg?text=supa-shop",
+		image: supaShop,
 		tags: [
 			"React",
 			"TailwindCSS",
@@ -24,7 +28,7 @@ const projects = [
 		title: "@lastfm-viewer",
 		description:
 			"UI web components (npm package) to view recent scrobbles for a Last.fm user. Built for React, Solid, and Svelte.",
-		image: "/placeholder/500x300.svg?text=@lastfm-viewer",
+		image: lastfmViewer,
 		tags: ["React", "Solid.js", "Svelte", "NPM", "API", "Last.fm"],
 		liveUrl: "https://lastfm-viewer.vercel.app/",
 		githubUrl: "https://github.com/zoasr/lastfm-viewer", // CV implies this is the repo for the project
@@ -33,7 +37,7 @@ const projects = [
 		title: "libmatrix",
 		description:
 			"A lightweight, open-source C++ library for various matrix computations including creation, basic operations, and advanced functions.",
-		image: "/placeholder/500x300.svg?text=libmatrix",
+		image: null,
 		tags: ["C++", "Library", "Mathematics", "Open Source"],
 		liveUrl: null,
 		githubUrl: "https://github.com/ZOASR/libmatrix",
@@ -42,7 +46,7 @@ const projects = [
 		title: "FishBot (Graduation Project)",
 		description:
 			"Fully automated monitoring system for fish farms with real-time analytics for water quality, fish health, and automated controls.",
-		image: "/placeholder/500x300.svg?text=FishBot",
+		image: null,
 		tags: ["IoT", "Arduino", "RaspberryPi", "MQTT", "C++", "Programming"],
 		liveUrl: null,
 		githubUrl: null,
@@ -51,7 +55,7 @@ const projects = [
 		title: "Smart Home System",
 		description:
 			"Comprehensive smart home project integrating IoT devices and automation for enhanced convenience, energy efficiency, and security.",
-		image: "/placeholder/500x300.svg?text=SmartHome",
+		image: null,
 		tags: ["Smart Home", "IoT", "Arduino", "C++", "Programming"],
 		liveUrl: null,
 		githubUrl: null,
@@ -60,7 +64,7 @@ const projects = [
 		title: "Recyclink",
 		description:
 			"Industrial company website. Designed and managed content, built with Astro.",
-		image: "/placeholder/500x300.svg?text=Recyclink",
+		image: recyclink,
 		tags: ["Astro", "Frontend", "Content Management"],
 		liveUrl: "https://recyc-link.vercel.app/en/",
 		githubUrl: "https://github.com/zoasr/recyc-link",
@@ -69,7 +73,7 @@ const projects = [
 		title: "Machlist",
 		description:
 			"Industrial company website. Designed and managed content, built with Astro.",
-		image: "/placeholder/500x300.svg?text=Machlist",
+		image: machlist,
 		tags: ["Astro", "Frontend", "UI/UX"],
 		liveUrl: "https://machlist.vercel.app/en/",
 		githubUrl: "https://github.com/zoasr/machlist",
@@ -92,17 +96,30 @@ const projects = [
 				projects.map((project) => (
 					<div class="futuristic-card flex flex-col overflow-hidden rounded-lg group">
 						<div class="relative overflow-hidden">
-							<Image
-								src={project.image || "/placeholder.svg"}
-								alt={project.title}
-								width={500}
-								height={300}
-								class="object-cover w-full h-52 transition-transform duration-500 group-hover:scale-105"
-							/>
-							<div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
+							{project.image !== null && (
+								<>
+									<Image
+										src={
+											project.image || "/placeholder.svg"
+										}
+										alt={project.title}
+										width={500}
+										height={300}
+										class="object-cover w-full h-52 transition-transform duration-500 group-hover:scale-105"
+									/>
+									<div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
+								</>
+							)}
 						</div>
 						<div class="p-6 flex flex-col flex-grow">
-							<h3 class="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+							<h3
+								class="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors"
+								class:list={
+									project.image !== null
+										? "text-xl"
+										: "text-4xl"
+								}
+							>
 								{project.title}
 							</h3>
 							<p class="text-muted-foreground text-sm flex-grow mb-4">
