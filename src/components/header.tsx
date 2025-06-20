@@ -1,27 +1,40 @@
 import { createSignal, For } from "solid-js";
+import type { JSXElement } from "solid-js";
 import ThemeSwitcher from "./theme-switcher";
+import { Icon } from "@iconify-icon/solid";
 
-export default function HeaderTSX({
-	zap,
-	close,
-	open,
-	iconLight,
-	iconDark,
-	navItems,
-}: any) {
+type NavItem = {
+	href: string;
+	label: string;
+};
+
+type Theme = "light" | "dark" | "rosey" | "system";
+
+const themeLabels = {
+	light: "Light",
+	dark: "Dark",
+	rosey: "Rosey",
+	system: "System",
+};
+
+type Props = {
+	navItems: NavItem[];
+	theme: Theme;
+	logo: JSXElement;
+};
+
+export default function HeaderTSX(props: Props) {
 	const [isOpen, setIsOpen] = createSignal(false);
 	const [active, setActive] = createSignal(window.location.pathname);
 
-	const icons = {
-		iconLight,
-		iconDark,
-	};
+	console.log(props);
+	const { navItems, theme, logo } = props;
 
 	return (
 		<header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 			<div class="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4">
 				<a href="/" class="flex items-center gap-2 group text-primary">
-					{zap}
+					{logo}
 					<span class="font-bold text-xl tracking-tight">zoasr</span>
 				</a>
 
@@ -43,7 +56,7 @@ export default function HeaderTSX({
 					</For>
 				</nav>
 				<span class="md:inline hidden ">
-					<ThemeSwitcher icons={icons} />
+					<ThemeSwitcher theme={theme} />
 				</span>
 
 				<div class="md:hidden">
@@ -51,7 +64,11 @@ export default function HeaderTSX({
 						onClick={() => setIsOpen(!isOpen())}
 						class="text-muted-foreground p-2"
 					>
-						{isOpen() ? <>{close}</> : <>{open}</>}
+						{isOpen() ? (
+							<Icon icon="pixelarticons:close" />
+						) : (
+							<Icon icon="pixelarticons:menu" />
+						)}
 					</button>
 				</div>
 			</div>
@@ -82,7 +99,7 @@ export default function HeaderTSX({
 						)}
 					</For>
 					<span class="text-muted-foreground transition-colors hover:text-primary hover:bg-background w-full text-center py-3 rounded-md text-base">
-						<ThemeSwitcher icons={icons} />
+						<ThemeSwitcher theme={theme} />
 					</span>
 				</nav>
 			</div>

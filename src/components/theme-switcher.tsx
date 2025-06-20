@@ -5,7 +5,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "$/components/ui/select";
-import { createSignal } from "solid-js";
+
+import { Icon } from "@iconify-icon/solid";
 
 const themes = ["light", "dark", "rosey", "system"];
 const themeLabels = {
@@ -15,13 +16,20 @@ const themeLabels = {
 	system: "System",
 };
 
-type Icon = {
-	[key: `icon${string}`]: Element;
+const IconComponent = (props: { name: string }) => {
+	return <Icon icon={props.name} />;
+};
+
+const icons = {
+	light: "pixelarticons:sun-alt",
+	dark: "pixelarticons:moon",
+	rosey: "pixelarticons:moon",
+	system: "pixelarticons:device-laptop",
 };
 
 type Theme = keyof typeof themeLabels;
 
-const ThemeSwitcher = (props: { icons: Icon }) => {
+const ThemeSwitcher = (props: { theme: Theme }) => {
 	return (
 		<>
 			<Select
@@ -30,21 +38,10 @@ const ThemeSwitcher = (props: { icons: Icon }) => {
 					<SelectItem item={props_.item} class="p-4 md:p-2">
 						{
 							<span class="flex items-center gap-2">
-								{
-									props.icons[
-										`icon${
-											themeLabels[
-												props_.item.rawValue as Theme
-											]
-										}`
-									]
-								}
-								{
-									themeLabels[
-										props_.item
-											.rawValue as keyof typeof themeLabels
-									]
-								}
+								<IconComponent
+									name={icons[props_.item.rawValue as Theme]}
+								/>
+								{themeLabels[props_.item.rawValue as Theme]}
 							</span>
 						}
 					</SelectItem>
@@ -74,16 +71,18 @@ const ThemeSwitcher = (props: { icons: Icon }) => {
 						{(state) => {
 							return (
 								<>
+									<IconComponent
+										name={
+											icons[
+												state.selectedOption() as Theme
+											]
+										}
+									/>
 									{
-										props.icons[
-											`icon${
-												themeLabels[
-													state.selectedOption()
-												]
-											}`
+										themeLabels[
+											state.selectedOption() as Theme
 										]
 									}
-									{themeLabels[state.selectedOption()]}
 								</>
 							);
 						}}

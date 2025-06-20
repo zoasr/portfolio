@@ -38,23 +38,23 @@ export const SelectTrigger = <T extends ValidComponent = "button">(
 			{...rest}
 		>
 			{local.children}
-			<SelectPrimitive.Icon
-				as="svg"
-				xmlns="http://www.w3.org/2000/svg"
-				width="1em"
-				height="1em"
-				viewBox="0 0 24 24"
-				class="flex size-4 items-center justify-center opacity-50"
-			>
-				<path
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="m8 9l4-4l4 4m0 6l-4 4l-4-4"
-				/>
-			</SelectPrimitive.Icon>
+			{/* <SelectPrimitive.Icon
+					as="svg"
+					xmlns="http://www.w3.org/2000/svg"
+					width="1em"
+					height="1em"
+					viewBox="0 0 24 24"
+					class="flex size-4 items-center justify-center opacity-50"
+				>
+					<path
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="m8 9l4-4l4 4m0 6l-4 4l-4-4"
+					/>
+				</SelectPrimitive.Icon> */}
 		</SelectPrimitive.Trigger>
 	);
 };
