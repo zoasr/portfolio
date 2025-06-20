@@ -18,7 +18,7 @@ export default defineConfig({
 
 	integrations: [icon(), solidJs()],
 	adapter: cloudflare({
-		imageService: "cloudflare",
+		imageService: "passthrough",
 		platformProxy: {
 			enabled: true,
 		},
