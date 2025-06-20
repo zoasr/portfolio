@@ -9,9 +9,11 @@ interface Props {
 }
 
 const { title }: Props = Astro.props;
+
+const theme = Astro.cookies.get("theme")?.value;
 ---
 
-<html lang="en">
+<html lang="en" data-theme={theme === "system" ? "" : theme}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/logo.svg" />

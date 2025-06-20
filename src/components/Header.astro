@@ -2,13 +2,22 @@
 import { Icon } from "astro-icon/components";
 import HeaderTSX from "@/components/header.tsx";
 import Logo from "@/images/logo.svg";
+
+const navItems = [
+	{ href: "/#about", label: "About" },
+	{ href: "/#skills", label: "Skills" },
+	{ href: "/#projects", label: "Projects" },
+	{ href: "/#experience", label: "Experience" },
+	{ href: "/about", label: "Details" },
+];
 ---
 
-<HeaderTSX client:only>
+<HeaderTSX client:only navItems={navItems}>
 	<Icon slot="close" name="pixelarticons:close" class="text-primary" />
 	<Icon slot="open" name="pixelarticons:menu" class="text-primary" />
-	<!-- <Icon slot="zap" name="pixelarticons:zap" class="h-7 w-7 text-primary" /> -->
+	<Icon slot="iconLight" name="pixelarticons:sun-alt" />
+	<Icon slot="iconDark" name="pixelarticons:moon" />
 	<Fragment slot="zap">
-		<Logo class="size-[clamp(2rem,10vw,4rem)] text-foreground" />
+		<Logo class="size-[clamp(2rem,5vw,4rem)]" />
 	</Fragment>
 </HeaderTSX>
