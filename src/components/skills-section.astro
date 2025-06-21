@@ -1,72 +1,173 @@
 ---
-// import { Code2, DatabaseZap, Palette, ToyBrick } from "lucide-react";
 import { Icon } from "astro-icon/components";
+import html from "@/images/html.svg";
+import css from "@/images/css.svg";
+import js from "@/images/js.svg";
+import ts from "@/images/ts.svg";
+import py from "@/images/py.svg";
+import c from "@/images/c.svg";
+import cpp from "@/images/cpp.svg";
+import php from "@/images/php.svg";
+import oop from "@/images/oop.svg";
+import react from "@/images/react.svg";
+import nextjs from "@/images/nextjs.svg";
+import svelte from "@/images/svelte.svg";
+import solid from "@/images/solid.svg";
+import astro from "@/images/astro.svg";
+import vite from "@/images/vite.svg";
+import tailwind from "@/images/tailwind.svg";
+import p5 from "@/images/p5.svg";
+import nodejs from "@/images/nodejs.svg";
+import mysql from "@/images/mysql.svg";
+import postgresql from "@/images/postgresql.svg";
+import supabase from "@/images/supabase.svg";
+import git from "@/images/git.svg";
+import github from "@/images/github.svg";
+import tanstack from "@/images/tanstack.svg";
 
 const skillCategories = [
 	{
 		title: "Languages & Core Concepts",
-		// icon: <Code2 class="w-8 h-8 text-primary" />,
 		icon: {
 			name: "pixelarticons:code",
 			class: "h-8 w-8 text-primary",
 		},
 		skills: [
-			"HTML",
-			"CSS",
-			"JavaScript (ES6+)",
-			"TypeScript",
-			"Python",
-			"C",
-			"C++",
-			"PHP",
-			"OOP",
+			{
+				name: "HTML",
+				icon: html,
+			},
+			{
+				name: "CSS",
+				icon: css,
+			},
+			{
+				name: "JavaScript (ES6+)",
+				icon: js,
+			},
+			{
+				name: "TypeScript",
+				icon: ts,
+			},
+			{
+				name: "Python",
+				icon: py,
+			},
+			{
+				name: "C",
+				icon: c,
+			},
+			{
+				name: "C++",
+				icon: cpp,
+			},
+			{
+				name: "PHP",
+				icon: php,
+			},
+			{
+				name: "OOP",
+				icon: oop,
+			},
 		],
 	},
 	{
 		title: "Frontend Frameworks & Libraries",
-		// icon: <ToyBrick class="w-8 h-8 text-primary" />,
 		icon: {
 			name: "pixelarticons:card-stack",
 			class: "h-8 w-8 text-primary",
 		},
 		skills: [
-			"React.js",
-			"Next.js",
-			"Svelte (SvelteKit)",
-			"Solid.js",
-			"Astro",
-			"Vite",
-			"TanStack (Router, Query, Start)",
+			{
+				name: "React.js",
+				icon: react,
+			},
+			{
+				name: "Next.js",
+				icon: nextjs,
+			},
+			{
+				name: "Svelte (SvelteKit)",
+				icon: svelte,
+			},
+			{
+				name: "Solid.js",
+				icon: solid,
+			},
+			{
+				name: "Astro",
+				icon: astro,
+			},
+			{
+				name: "Vite",
+				icon: vite,
+			},
+			{
+				name: "TanStack (Router, Query, Start)",
+				icon: tanstack,
+			},
 		],
 	},
 	{
 		title: "Styling & Creative Coding",
-		// icon: <Palette class="w-8 h-8 text-primary" />,
 		icon: {
 			name: "streamline-pixel:design-color-palette-sample",
 			class: "h-8 w-8 text-primary",
 		},
-		skills: ["TailwindCSS", "p5.js"],
+		skills: [
+			{
+				name: "TailwindCSS",
+				icon: tailwind,
+			},
+			{
+				name: "p5.js",
+				icon: p5,
+			},
+		],
 	},
 	{
 		title: "Backend, Databases & Tools",
-		// icon: <DatabaseZap class="w-8 h-8 text-primary" />,
 		icon: {
 			name: "streamline-pixel:coding-apps-websites-database",
 			class: "h-8 w-8 text-primary",
 		},
-		skills: ["Node.js", "MySQL", "PostgreSQL", "Supabase", "Git", "GitHub"],
+		skills: [
+			{
+				name: "Node.js",
+				icon: nodejs,
+			},
+			{
+				name: "MySQL",
+				icon: mysql,
+			},
+			{
+				name: "PostgreSQL",
+				icon: postgresql,
+			},
+			{
+				name: "Supabase",
+				icon: supabase,
+			},
+			{
+				name: "Git",
+				icon: git,
+			},
+			{
+				name: "GitHub",
+				icon: github,
+			},
+		],
 	},
 ];
 ---
 
-<section id="skills" class="w-full py-16 md:py-24">
+<section id="skills" class="w-full py-16 md:py-24 border-b-2 border-border/60">
 	<div class="container mx-auto px-4">
 		<div class="text-center mb-16">
 			<h2
 				class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
 			>
-				My Tech Arsenal
+				My Tech Skills
 			</h2>
 			<div class="section-title-underline"></div>
 		</div>
@@ -79,16 +180,18 @@ const skillCategories = [
 								name={category.icon.name}
 								class={category.icon.class}
 							/>
-							{/* {category.icon} */}
 							<h3 class="text-xl font-semibold text-foreground">
 								{category.title}
 							</h3>
 						</div>
 						<div class="flex flex-wrap gap-2">
 							{category.skills.map((skill) => (
-								<span class="px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-md hover:bg-primary/20 transition-colors cursor-default">
-									{skill}
-								</span>
+								<>
+									<span class="flex gap-1 px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-md hover:bg-primary/20 transition-colors cursor-default">
+										<skill.icon class="h-6 w-6" />
+										{skill.name}
+									</span>
+								</>
 							))}
 						</div>
 					</div>

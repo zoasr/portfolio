@@ -1,4 +1,12 @@
 ---
+import react from "@/images/react.svg";
+import solid from "@/images/solid.svg";
+import svelte from "@/images/svelte.svg";
+import opensource from "@/images/oss.svg";
+import astro from "@/images/astro.svg";
+import php from "@/images/php.svg";
+import mysql from "@/images/mysql.svg";
+
 const experiences = [
 	{
 		company: "Recyclink, Machlist",
@@ -7,16 +15,12 @@ const experiences = [
 		location: "Egypt",
 		description:
 			"Worked as a Front-End Web developer designing and managing content for an industrial company's new Websites; Built and maintained using the Astro framework. Projects: Machlist, Recyclink.",
-		tags: ["Astro", "Frontend", "UI/UX", "Content Management"],
-	},
-	{
-		company: "Military Service",
-		role: "PHP (XAMPP) Full Stack Developer",
-		period: "July 2024 - June 2025 (Expected)",
-		location: "Egypt",
-		description:
-			"Developed and maintained a full stack web app using the XAMPP stack, hosted on a local network during my military service.",
-		tags: ["PHP", "XAMPP", "Full Stack", "MySQL", "Apache"],
+		tags: [
+			{ name: "Astro", icon: astro },
+			{ name: "Frontend", icon: null },
+			{ name: "UI/UX", icon: null },
+			{ name: "Content Management", icon: null },
+		],
 	},
 	{
 		company: "@lastfm-viewer (Personal Project)", // Using title from CV's project section for consistency if it's the same
@@ -26,12 +30,27 @@ const experiences = [
 		description:
 			"Maintainer of @lastfm-viewer, a collection of UI web components hosted on npm to view recent scrobbles for a Last.fm user, built for React, Solid, and Svelte frameworks.",
 		tags: [
-			"React",
-			"Solid.js",
-			"Svelte",
-			"NPM",
-			"Open Source",
-			"API Integration",
+			{ name: "React", icon: react },
+			{ name: "Solid.js", icon: solid },
+			{ name: "Svelte", icon: svelte },
+			{ name: "NPM", icon: null },
+			{ name: "Open Source", icon: opensource },
+			{ name: "API Integration", icon: null },
+		],
+	},
+	{
+		company: "Military Service",
+		role: "PHP (XAMPP) Full Stack Developer",
+		period: "July 2024 - June 2025 (Expected)",
+		location: "Egypt",
+		description:
+			"Developed and maintained a full stack web app using the XAMPP stack, hosted on a local network during my military service.",
+		tags: [
+			{ name: "PHP", icon: php },
+			{ name: "XAMPP", icon: null },
+			{ name: "Full Stack", icon: null },
+			{ name: "MySQL", icon: mysql },
+			{ name: "Apache", icon: null },
 		],
 	},
 ];
@@ -82,8 +101,11 @@ const experiences = [
 									{exp.tags && exp.tags.length > 0 && (
 										<div class="mt-3 flex flex-wrap gap-2">
 											{exp.tags.map((tag) => (
-												<span class="card-tag border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
-													{tag}
+												<span class="card-tag flex gap-1 text-[clamp(1rem,1vw,2rem)] items-center border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
+													{tag.icon && (
+														<tag.icon class="size-[clamp(0.6rem,1vw,1rem)]" />
+													)}
+													{tag.name}
 												</span>
 											))}
 										</div>

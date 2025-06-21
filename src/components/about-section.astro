@@ -1,4 +1,11 @@
-<section id="about" class="w-full py-16 md:py-24 bg-card">
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section
+	id="about"
+	class="w-full py-16 md:py-24 bg-card border-b-2 border-border/60"
+>
 	<div class="container mx-auto px-4">
 		<div class="max-w-3xl mx-auto text-center">
 			<h2
@@ -7,14 +14,22 @@
 				Who I Am
 			</h2>
 			<div class="section-title-underline"></div>
-			<p class="mt-8 text-lg text-muted-foreground md:text-xl">
-				A Mechatronics Engineer turned Front-End Developer, I merge
-				analytical problem-solving with a creative passion for building
-				intuitive and impactful web solutions. I thrive on transforming
-				complex challenges into elegant user experiences.
+			<p
+				class="mt-8 text-lg text-muted-foreground md:text-xl tracking-wide leading-12"
+			>
+				An Electrical Engineer turned Front-End Developer, I merge
+				analytical problem-solving with a creative mind for building
+				intuitive and easy-to-use web apps & websites.
 			</p>
-			<button class="mt-6 text-primary text-lg hover:underline">
+			<button
+				class="group w-fit mx-auto flex gap-2 items-center mt-6 text-primary text-xl hover:underline bg-accent px-6 py-2 rounded-lg hover:bg-accent/90 transition-colors"
+			>
 				<a href="/about">Discover More About Me</a>
+				<span
+					class="group-hover:scale-100 group-focus:scale-100 scale-0 w-0 group-hover:w-2 group-focus:w-2 transition-all duration-150"
+				>
+					<Icon name="pixelarticons:arrow-right" />
+				</span>
 			</button>
 		</div>
 	</div>

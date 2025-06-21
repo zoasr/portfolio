@@ -1,11 +1,22 @@
 ---
-import { Image } from "astro:assets";
+// import { Image } from "astro:assets";
 
 import { Icon } from "astro-icon/components";
 import lastfmViewer from "@/images/@lastfm-viewer.webp";
 import machlist from "@/images/machlist.webp";
 import recyclink from "@/images/recyclink.webp";
 import supaShop from "@/images/supa-shop.webp";
+import react from "@/images/react.svg";
+import tailwind from "@/images/tailwind.svg";
+import tanstack from "@/images/tanstack.svg";
+import supabase from "@/images/supabase.svg";
+import ts from "@/images/ts.svg";
+import solid from "@/images/solid.svg";
+import svelte from "@/images/svelte.svg";
+import cpp from "@/images/cpp.svg";
+import opensource from "@/images/oss.svg";
+import iot from "@/images/iot.svg";
+import astro from "@/images/astro.svg";
 
 const projects = [
 	{
@@ -14,12 +25,12 @@ const projects = [
 			"A modern, full-stack e-commerce platform built with React, TypeScript, and Supabase. Features real-time inventory, secure auth, and responsive design.",
 		image: supaShop,
 		tags: [
-			"React",
-			"TailwindCSS",
-			"TanStack Router",
-			"i18n",
-			"Supabase",
-			"TypeScript",
+			{ name: "React", icon: react },
+			{ name: "TailwindCSS", icon: tailwind },
+			{ name: "TanStack Router", icon: tanstack },
+			{ name: "i18n", icon: null },
+			{ name: "Supabase", icon: supabase },
+			{ name: "TypeScript", icon: ts },
 		],
 		liveUrl: null, // Not specified in CV
 		githubUrl: "https://github.com/zoasr/supa-shop",
@@ -29,7 +40,14 @@ const projects = [
 		description:
 			"UI web components (npm package) to view recent scrobbles for a Last.fm user. Built for React, Solid, and Svelte.",
 		image: lastfmViewer,
-		tags: ["React", "Solid.js", "Svelte", "NPM", "API", "Last.fm"],
+		tags: [
+			{ name: "React", icon: react },
+			{ name: "Solid.js", icon: solid },
+			{ name: "Svelte", icon: svelte },
+			{ name: "NPM", icon: null },
+			{ name: "API", icon: null },
+			{ name: "Last.fm", icon: null },
+		],
 		liveUrl: "https://lastfm-viewer.vercel.app/",
 		githubUrl: "https://github.com/zoasr/lastfm-viewer", // CV implies this is the repo for the project
 	},
@@ -38,7 +56,12 @@ const projects = [
 		description:
 			"A lightweight, open-source C++ library for various matrix computations including creation, basic operations, and advanced functions.",
 		image: null,
-		tags: ["C++", "Library", "Mathematics", "Open Source"],
+		tags: [
+			{ name: "C++", icon: cpp },
+			{ name: "Library", icon: null },
+			{ name: "Mathematics", icon: null },
+			{ name: "Open Source", icon: opensource },
+		],
 		liveUrl: null,
 		githubUrl: "https://github.com/ZOASR/libmatrix",
 	},
@@ -47,7 +70,14 @@ const projects = [
 		description:
 			"Fully automated monitoring system for fish farms with real-time analytics for water quality, fish health, and automated controls.",
 		image: null,
-		tags: ["IoT", "Arduino", "RaspberryPi", "MQTT", "C++", "Programming"],
+		tags: [
+			{ name: "IoT", icon: null },
+			{ name: "Arduino", icon: null },
+			{ name: "RaspberryPi", icon: null },
+			{ name: "MQTT", icon: null },
+			{ name: "C++", icon: cpp },
+			{ name: "Programming", icon: null },
+		],
 		liveUrl: null,
 		githubUrl: null,
 	},
@@ -56,7 +86,13 @@ const projects = [
 		description:
 			"Comprehensive smart home project integrating IoT devices and automation for enhanced convenience, energy efficiency, and security.",
 		image: null,
-		tags: ["Smart Home", "IoT", "Arduino", "C++", "Programming"],
+		tags: [
+			{ name: "Smart Home", icon: null },
+			{ name: "IoT", icon: null },
+			{ name: "Arduino", icon: null },
+			{ name: "C++", icon: cpp },
+			{ name: "Programming", icon: null },
+		],
 		liveUrl: null,
 		githubUrl: null,
 	},
@@ -65,7 +101,11 @@ const projects = [
 		description:
 			"Industrial company website. Designed and managed content, built with Astro.",
 		image: recyclink,
-		tags: ["Astro", "Frontend", "Content Management"],
+		tags: [
+			{ name: "Astro", icon: astro },
+			{ name: "Frontend", icon: null },
+			{ name: "Content Management", icon: null },
+		],
 		liveUrl: "https://recyc-link.vercel.app/en/",
 		githubUrl: "https://github.com/zoasr/recyc-link",
 	},
@@ -74,14 +114,21 @@ const projects = [
 		description:
 			"Industrial company website. Designed and managed content, built with Astro.",
 		image: machlist,
-		tags: ["Astro", "Frontend", "UI/UX"],
+		tags: [
+			{ name: "Astro", icon: astro },
+			{ name: "Frontend", icon: null },
+			{ name: "UI/UX", icon: null },
+		],
 		liveUrl: "https://machlist.vercel.app/en/",
 		githubUrl: "https://github.com/zoasr/machlist",
 	},
 ];
 ---
 
-<section id="projects" class="w-full py-16 md:py-24 bg-card">
+<section
+	id="projects"
+	class="w-full py-16 md:py-24 bg-card border-b-2 border-border/60"
+>
 	<div class="container mx-auto px-4">
 		<div class="text-center mb-16">
 			<h2
@@ -125,8 +172,11 @@ const projects = [
 							</p>
 							<div class="mb-4 flex flex-wrap gap-2">
 								{project.tags.map((tag) => (
-									<span class="card-tag border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
-										{tag}
+									<span class="card-tag flex gap-1 text-[clamp(1rem,1vw,2rem)] items-center border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
+										{tag.icon && (
+											<tag.icon class="size-[clamp(0.6rem,1vw,1rem)]" />
+										)}
+										{tag.name}
 									</span>
 								))}
 							</div>
