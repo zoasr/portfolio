@@ -1,6 +1,7 @@
 ---
-import HeaderTSX from "@/components/header.tsx";
 import Logo from "@/images/logo.svg";
+import ThemeSwitcher from "./theme-switcher";
+import { MobileMenu, MenuToggle } from "./menu";
 
 const navItems = [
 	{ href: "/#about", label: "About" },
@@ -16,13 +17,79 @@ const themeLabels = {
 	system: "System",
 };
 
-type Theme = keyof typeof themeLabels;
+export type Theme = keyof typeof themeLabels;
 
 const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 ---
 
-<HeaderTSX client:only navItems={navItems} theme={theme}>
-	<Fragment slot="logo">
-		<Logo class="size-[clamp(2rem,5vw,4rem)]" />
-	</Fragment>
-</HeaderTSX>
+<header
+	class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+	<div
+		class="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4"
+	>
+		<a href="/" class="flex items-center gap-2 group text-primary">
+			<Logo class="size-[clamp(2rem,5vw,4rem)]" />
+			<span class="font-bold text-xl tracking-tight">zoasr</span>
+		</a>
+
+		<nav class="hidden md:flex items-center gap-6 text-sm">
+			{
+				navItems.map((item) => (
+					<a
+						href={item.href}
+						data-sectionid={item.href.split("#")[1]}
+						class="text-muted-foreground transition-colors hover:text-primary hover:font-medium data-[active=true]:text-primary"
+						data-active={"false"}
+					>
+						{item.label}
+					</a>
+				))
+			}
+		</nav>
+		<span class="md:inline hidden">
+			<ThemeSwitcher client:idle theme={theme} />
+		</span>
+		<MenuToggle client:idle />
+	</div>
+	<MobileMenu client:only navItems={navItems} theme={theme} />
+</header>
+
+<script>
+	const sectionEls = document.querySelectorAll("section[id]");
+
+	//intersection observer
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const sectionId = entry.target.id;
+					const navLink = document.querySelectorAll(
+						`nav a[data-sectionid="${sectionId}"]`
+					);
+					if (navLink.length > 0) {
+						navLink.forEach((link) => {
+							link.setAttribute("data-active", "true");
+						});
+					}
+				} else {
+					const sectionId = entry.target.id;
+					const navLink = document.querySelectorAll(
+						`nav a[data-sectionid="${sectionId}"]`
+					);
+					if (navLink.length > 0) {
+						navLink.forEach((link) => {
+							link.setAttribute("data-active", "false");
+						});
+					}
+				}
+			});
+		},
+		{
+			threshold: 0.2,
+		}
+	);
+	sectionEls.forEach((sectionEl) => {
+		observer.observe(sectionEl);
+	});
+</script>
