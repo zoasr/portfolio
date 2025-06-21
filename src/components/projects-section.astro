@@ -2,10 +2,10 @@
 import { Image } from "astro:assets";
 
 import { Icon } from "astro-icon/components";
-import lastfmViewer from "@/images/@lastfm-viewer.png";
-import machlist from "@/images/machlist.png";
-import recyclink from "@/images/recyclink.png";
-import supaShop from "@/images/supa-shop.png";
+import lastfmViewer from "@/images/@lastfm-viewer.webp";
+import machlist from "@/images/machlist.webp";
+import recyclink from "@/images/recyclink.webp";
+import supaShop from "@/images/supa-shop.webp";
 
 const projects = [
 	{
@@ -99,10 +99,7 @@ const projects = [
 							{project.image !== null && (
 								<>
 									<img
-										src={
-											project.image.src ||
-											"/placeholder.svg"
-										}
+										src={project.image.src}
 										alt={project.title}
 										width={500}
 										height={300}
