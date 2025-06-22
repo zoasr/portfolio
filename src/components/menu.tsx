@@ -14,15 +14,11 @@ export const toggleMenu = () => {
 	}));
 };
 
-export const MenuToggle = () => {
+export const MenuToggle = ({ open, close }: any) => {
 	return (
 		<div class="md:hidden">
 			<button class="text-muted-foreground p-2" onClick={toggleMenu}>
-				{menuStore.isOpen ? (
-					<Icon icon="pixelarticons:close" />
-				) : (
-					<Icon icon="pixelarticons:menu" />
-				)}
+				{menuStore.isOpen ? close : open}
 			</button>
 		</div>
 	);

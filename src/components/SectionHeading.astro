@@ -2,15 +2,15 @@
 const { title, sectionId } = Astro.props;
 ---
 
-<div class="text-center mb-16 section-heading" data-sectionid={sectionId}>
+<div
+	class="text-center mb-16 section-heading mx-auto"
+	data-sectionid={sectionId}
+>
 	<h2
-		class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl relative"
+		class="heading-text text-3xl font-bold tracking-tighter text-foreground mx-auto w-fit sm:text-4xl md:text-5xl relative"
 	>
-		<span class="relative"
-			>{title}
-
-			<span class="heading-mask absolute -inset-4 rounded-md"> </span>
-		</span>
+		{title}
+		<span class="heading-mask absolute -inset-4 rounded-md"> </span>
 	</h2>
 </div>
 <style>
@@ -25,7 +25,7 @@ const { title, sectionId } = Astro.props;
 		inherits: true;
 	}
 
-	.section-heading .heading-mask {
+	.heading-mask {
 		--border-width: 5px;
 
 		--border-right-end: calc(180deg - var(--clipping-width));
@@ -45,7 +45,6 @@ const { title, sectionId } = Astro.props;
 				transparent var(--border-left-end)
 			)
 			border-box;
-		/* mask-image: url(#mask); */
 		clip-path: polygon(
 			evenodd,
 			0 0,
@@ -64,12 +63,19 @@ const { title, sectionId } = Astro.props;
 			--clipping-width: 180deg;
 		}
 	}
-
-	.section-heading h2 span {
+	.heading-text {
 		--clipping-width: 30deg;
-	}
-	.section-heading:hover h2 span {
-		--clipping-width: 180deg;
+		height: 120%;
+		transition: text-shadow 0.5s ease-in-out;
+		&:hover {
+			.heading-mask {
+				--clipping-width: 180deg;
+			}
+		}
+
+		&:hover {
+			text-shadow: 0 0 10px var(--primary);
+		}
 	}
 </style>
 

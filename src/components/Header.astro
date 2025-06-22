@@ -2,6 +2,7 @@
 import Logo from "@/images/logo.svg";
 import ThemeSwitcher from "./theme-switcher";
 import { MobileMenu, MenuToggle } from "./menu";
+import { Icon } from "astro-icon/components";
 
 const navItems = [
 	{ href: "/#about", label: "About" },
@@ -50,7 +51,22 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 		<span class="md:inline hidden">
 			<ThemeSwitcher client:idle theme={theme} />
 		</span>
-		<MenuToggle client:idle />
+		<MenuToggle client:idle>
+			<Icon
+				slot="open"
+				aria-label="Open menu"
+				tabindex={0}
+				class="size-8"
+				name="pixelarticons:menu"
+			/>
+			<Icon
+				slot="close"
+				aria-label="Close menu"
+				tabindex={0}
+				class="size-8"
+				name="pixelarticons:close"
+			/>
+		</MenuToggle>
 	</div>
 	<MobileMenu client:only navItems={navItems} theme={theme} />
 </header>
