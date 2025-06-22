@@ -1,45 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
+import SectionBackground from "./section-background.astro";
 ---
 
 <section
 	id="hero"
-	class="w-full min-h-[calc(100vh-4rem)] flex items-center justify-center relative overflow-hidden border-b-2 border-border/60"
+	class="w-full min-h-[calc(100vh-4rem)] flex items-center justify-center relative overflow-hidden border-b-2 border-border/60 isolate"
 >
-	<div class="absolute inset-0 z-0 opacity-10">
-		<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-			<defs>
-				<pattern
-					id="smallGrid"
-					width="20"
-					height="20"
-					patternUnits="userSpaceOnUse"
-				>
-					<path
-						d="M 20 0 L 0 0 0 20"
-						fill="none"
-						stroke="var(--primary)"
-						stroke-width="1"></path>
-				</pattern>
-				<pattern
-					id="grid"
-					width="200"
-					height="200"
-					patternUnits="userSpaceOnUse"
-				>
-					<rect width="200" height="200" fill="url(#smallGrid)"
-					></rect>
-					<path
-						d="M 200 0 L 0 0 0 200"
-						fill="none"
-						stroke="var(--primary)"
-						stroke-width="5"></path>
-				</pattern>
-			</defs>
-			<rect width="100%" height="100%" fill="url(#grid)"></rect>
-		</svg>
-	</div>
-
+	<SectionBackground sectionId="hero" />
 	<div class="container mx-auto text-center px-4 z-10">
 		<div class="max-w-4xl mx-auto">
 			<h1
@@ -138,7 +106,6 @@ import { Icon } from "astro-icon/components";
 
 <script>
 	import { gsap } from "gsap";
-
 	import { SplitText } from "gsap/SplitText";
 	gsap.registerPlugin(SplitText);
 

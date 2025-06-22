@@ -18,6 +18,7 @@ import opensource from "@/images/oss.svg";
 import iot from "@/images/iot.svg";
 import astro from "@/images/astro.svg";
 import SectionHeading from "./SectionHeading.astro";
+import SectionBackground from "./section-background.astro";
 
 const projects = [
 	{
@@ -128,8 +129,9 @@ const projects = [
 
 <section
 	id="projects"
-	class="w-full py-16 md:py-24 bg-card border-b-2 border-border/60"
+	class="w-full py-16 md:py-24 bg-card border-b-2 border-border/60 relative isolate"
 >
+	<SectionBackground sectionId="projects" />
 	<div class="container mx-auto px-4">
 		<SectionHeading title="My Projects" sectionId="projects" />
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

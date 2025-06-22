@@ -1,0 +1,173 @@
+---
+interface Props {
+	sectionId: string;
+}
+
+const gridSize = 40;
+const { sectionId } = Astro.props;
+---
+
+<div
+	style="--mx: 50%; --my: 50%"
+	class:list={[
+		"absolute inset-0 -z-1 opacity-25 overflow-clip",
+		`${sectionId}-svg-container`,
+	]}
+>
+	<span class="back-objects"></span>
+	<span class="back-objects"></span>
+	<span class="back-objects"></span>
+	<span class="back-objects"></span>
+	<svg
+		class:list={[
+			`${sectionId}-svg-grid`,
+			`mask-[radial-gradient(at_var(--mx)_var(--my),#0008_20%,transparent_50%)]`,
+		]}
+		width="100%"
+		height="100%"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<defs>
+			<filter id="blur" x="-100%" y="-100%" width="300%" height="300%">
+				<feGaussianBlur stdDeviation="200"></feGaussianBlur>
+			</filter>
+			<pattern
+				id="smallGrid"
+				width={gridSize}
+				height={gridSize}
+				patternUnits="userSpaceOnUse"
+			>
+				<path
+					d={`M ${gridSize} 0 L 0 0 0 ${gridSize}`}
+					fill="none"
+					stroke="var(--muted-foreground)"
+					stroke-width="3"></path>
+			</pattern>
+
+			<pattern
+				id="grid"
+				width="200"
+				height="200"
+				patternUnits="userSpaceOnUse"
+			>
+				<rect width="200" height="200" fill="url(#smallGrid)"></rect>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#grid)"></rect>
+	</svg>
+</div>
+
+<style>
+	.back-objects {
+		position: absolute;
+		display: block;
+		background: var(--primary);
+		filter: url(#blur);
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		z-index: 1;
+		opacity: 0.3;
+	}
+	.back-objects:nth-child(1) {
+		top: 0;
+		left: 0;
+		width: 1000px;
+		height: 1000px;
+		animation: move-around 5s ease-in-out infinite;
+	}
+	.back-objects:nth-child(2) {
+		top: 1%;
+		right: 1%;
+		animation: move-around-2 5s ease-in-out infinite;
+	}
+	.back-objects:nth-child(3) {
+		bottom: 1%;
+		left: 1%;
+		animation: move-around-3 5s ease-in-out infinite;
+	}
+	.back-objects:nth-child(4) {
+		bottom: 1%;
+		right: 1%;
+		width: 1000px;
+		height: 1000px;
+		animation: move-around 5s ease-in-out infinite;
+	}
+
+	@keyframes move-around {
+		0% {
+			transform: translate(0, 0);
+		}
+		50% {
+			transform: translate(150px, 150px);
+		}
+		100% {
+			transform: translate(0, 0);
+		}
+	}
+	@keyframes move-around-2 {
+		0% {
+			transform: translate(0, 0);
+		}
+		50% {
+			transform: translate(-150px, -150px);
+		}
+		100% {
+			transform: translate(0, 0);
+		}
+	}
+	@keyframes move-around-3 {
+		0% {
+			transform: translate(0, 0);
+		}
+		50% {
+			transform: translate(150px, -150px);
+		}
+		100% {
+			transform: translate(0, 0);
+		}
+	}
+</style>
+
+<script>
+	import { gsap } from "gsap";
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const mouseMoveListeners = new Map<Element, (e: MouseEvent) => void>();
+
+		const containers = document.querySelectorAll(
+			`[class*="-svg-container"]`
+		);
+		containers.forEach((container) => {
+			const handleMouseMove = (e: MouseEvent) => {
+				const svg = container.querySelector(`[class*="-svg-grid"]`);
+				if (!svg || !container) return;
+
+				const rect = container.getBoundingClientRect();
+
+				const mouseX = e.clientX - rect.left;
+				const mouseY = e.clientY - rect.top;
+
+				const xPercentage = (mouseX / rect.width) * 100;
+				const yPercentage = (mouseY / rect.height) * 100;
+
+				gsap.to(container, {
+					"--mx": `${xPercentage}%`,
+					"--my": `${yPercentage}%`,
+					duration: 0.1,
+					ease: "power2.out",
+				});
+			};
+			mouseMoveListeners.set(container, handleMouseMove);
+		});
+		document.addEventListener("mousemove", (e: MouseEvent) => {
+			mouseMoveListeners.forEach((listener, container) => {
+				listener(e);
+			});
+		});
+
+		return () => {
+			mouseMoveListeners.clear();
+		};
+	});
+</script>

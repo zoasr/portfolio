@@ -7,6 +7,7 @@ import astro from "@/images/astro.svg";
 import php from "@/images/php.svg";
 import mysql from "@/images/mysql.svg";
 import SectionHeading from "./SectionHeading.astro";
+import SectionBackground from "./section-background.astro";
 
 const experiences = [
 	{
@@ -57,7 +58,8 @@ const experiences = [
 ];
 ---
 
-<section id="experience" class="w-full py-16 md:py-24">
+<section id="experience" class="w-full py-16 md:py-24 relative isolate">
+	<SectionBackground sectionId="experience" />
 	<div class="container mx-auto px-4">
 		<SectionHeading title="My Experience" sectionId="experience" />
 		<div class="relative max-w-3xl mx-auto">

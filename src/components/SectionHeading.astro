@@ -4,12 +4,74 @@ const { title, sectionId } = Astro.props;
 
 <div class="text-center mb-16 section-heading" data-sectionid={sectionId}>
 	<h2
-		class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
+		class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl relative"
 	>
-		{title}
+		<span class="relative"
+			>{title}
+
+			<span class="heading-mask absolute -inset-4 rounded-md"> </span>
+		</span>
 	</h2>
-	<div class="section-title-underline"></div>
 </div>
+<style>
+	@property --border-right-end {
+		syntax: "<angle>";
+		initial-value: 0deg;
+		inherits: true;
+	}
+	@property --border-left-end {
+		syntax: "<angle>";
+		initial-value: 0deg;
+		inherits: true;
+	}
+
+	.section-heading .heading-mask {
+		--border-width: 5px;
+
+		--border-right-end: calc(180deg - var(--clipping-width));
+		--border-left-end: calc(180deg + var(--clipping-width));
+
+		--clip-path: calc(var(--border-width)) var(--border-width),
+			calc(100% - var(--border-width)) var(--border-width),
+			calc(100% - var(--border-width)) calc(100% - var(--border-width)),
+			calc(var(--border-width)) calc(100% - var(--border-width)),
+			var(--border-width) var(--border-width);
+		background: conic-gradient(
+				from 0deg,
+				transparent 0deg,
+				transparent var(--border-right-end),
+				var(--primary) var(--border-right-end),
+				var(--primary) var(--border-left-end),
+				transparent var(--border-left-end)
+			)
+			border-box;
+		/* mask-image: url(#mask); */
+		clip-path: polygon(
+			evenodd,
+			0 0,
+			100% 0,
+			100% 100%,
+			0 100%,
+			0 0,
+			var(--clip-path)
+		);
+		z-index: -1;
+		transition:
+			--border-right-end 0.5s ease-in-out,
+			--border-left-end 0.5s ease-in-out;
+
+		&:hover {
+			--clipping-width: 180deg;
+		}
+	}
+
+	.section-heading h2 span {
+		--clipping-width: 30deg;
+	}
+	.section-heading:hover h2 span {
+		--clipping-width: 180deg;
+	}
+</style>
 
 <script>
 	import { gsap } from "gsap";

@@ -25,6 +25,7 @@ import git from "@/images/git.svg";
 import github from "@/images/github.svg";
 import tanstack from "@/images/tanstack.svg";
 import SectionHeading from "./SectionHeading.astro";
+import SectionBackground from "./section-background.astro";
 
 const skillCategories = [
 	{
@@ -162,7 +163,11 @@ const skillCategories = [
 ];
 ---
 
-<section id="skills" class="w-full py-16 md:py-24 border-b-2 border-border/60">
+<section
+	id="skills"
+	class="w-full py-16 md:py-24 border-b-2 border-border/60 relative isolate"
+>
+	<SectionBackground sectionId="skills" />
 	<div class="container mx-auto px-4">
 		<SectionHeading title="My Tech Skills" sectionId="skills" />
 		<div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
