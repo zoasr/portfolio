@@ -6,6 +6,7 @@ import opensource from "@/images/oss.svg";
 import astro from "@/images/astro.svg";
 import php from "@/images/php.svg";
 import mysql from "@/images/mysql.svg";
+import SectionHeading from "./SectionHeading.astro";
 
 const experiences = [
 	{
@@ -58,14 +59,7 @@ const experiences = [
 
 <section id="experience" class="w-full py-16 md:py-24">
 	<div class="container mx-auto px-4">
-		<div class="text-center mb-16 relative">
-			<h2
-				class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
-			>
-				<span class="relative p-4"> My Journey </span>
-			</h2>
-			<div class="section-title-underline"></div>
-		</div>
+		<SectionHeading title="My Experience" sectionId="experience" />
 		<div class="relative max-w-3xl mx-auto">
 			<div class="futuristic-timeline-line"></div>
 			{
@@ -129,3 +123,48 @@ const experiences = [
 		box-shadow: inset 0 -1px 0 1px color-mix(in hsl, var(--primary) 20%, transparent);
 	}
 </style>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+
+	let mm = gsap.matchMedia();
+	const expCards = document.querySelectorAll(
+		`section#experience .futuristic-card`
+	);
+
+	mm.add("(width >= 48rem)", () => {
+		expCards.forEach((card, index) => {
+			gsap.from(card, {
+				x: index % 2 === 0 ? -100 : 100,
+				duration: 0.5,
+				ease: "back",
+				opacity: 0,
+				scrollTrigger: {
+					trigger: card,
+					toggleActions: "restart resume none reverse",
+					start: "top 80%",
+					end: "bottom 20%",
+				},
+			});
+		});
+	});
+
+	mm.add("(width < 48rem)", () => {
+		expCards.forEach((card, index) => {
+			gsap.from(card, {
+				y: 100,
+				duration: 0.5,
+				ease: "back",
+				opacity: 0,
+				scrollTrigger: {
+					trigger: card,
+					toggleActions: "restart resume none reverse",
+					start: "top 80%",
+					end: "bottom 20%",
+				},
+			});
+		});
+	});
+</script>

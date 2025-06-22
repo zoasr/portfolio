@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import SectionHeading from "./SectionHeading.astro";
 ---
 
 <section
@@ -8,18 +9,13 @@ import { Icon } from "astro-icon/components";
 >
 	<div class="container mx-auto px-4">
 		<div class="max-w-3xl mx-auto text-center">
-			<h2
-				class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
-			>
-				Who I Am
-			</h2>
-			<div class="section-title-underline"></div>
+			<SectionHeading title="Who I Am" sectionId="about" />
 			<p
 				class="mt-8 text-lg text-muted-foreground md:text-xl tracking-wide leading-12"
 			>
-				An Electrical Engineer turned Front-End Developer, I merge
-				analytical problem-solving with a creative mind for building
-				intuitive and easy-to-use web apps & websites.
+				An Engineer turned Front-End Developer, I merge analytical
+				problem-solving with a creative mind for building intuitive and
+				easy-to-use web apps & websites.
 			</p>
 			<button
 				class="group w-fit mx-auto flex gap-2 items-center mt-6 text-primary text-xl hover:underline bg-accent px-6 py-2 rounded-lg hover:bg-accent/90 transition-colors"

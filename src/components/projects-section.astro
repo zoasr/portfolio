@@ -17,6 +17,7 @@ import cpp from "@/images/cpp.svg";
 import opensource from "@/images/oss.svg";
 import iot from "@/images/iot.svg";
 import astro from "@/images/astro.svg";
+import SectionHeading from "./SectionHeading.astro";
 
 const projects = [
 	{
@@ -130,14 +131,7 @@ const projects = [
 	class="w-full py-16 md:py-24 bg-card border-b-2 border-border/60"
 >
 	<div class="container mx-auto px-4">
-		<div class="text-center mb-16">
-			<h2
-				class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
-			>
-				My Projects
-			</h2>
-			<div class="section-title-underline"></div>
-		</div>
+		<SectionHeading title="My Projects" sectionId="projects" />
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			{
 				projects.map((project) => (
@@ -227,3 +221,26 @@ const projects = [
 		box-shadow: inset 0 -1px 0 1px color-mix(in hsl, var(--primary) 20%, transparent);
 	}
 </style>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	//stagger animation of cards on section scroll
+
+	gsap.from(`section#projects .futuristic-card`, {
+		x: -100,
+		duration: 1,
+		ease: "back.out",
+		stagger: 0.2,
+		opacity: 0,
+		scrollTrigger: {
+			trigger: "section#projects .grid",
+			toggleActions: "restart none none reverse",
+			start: "top 80%",
+			end: "bottom 20%",
+		},
+	});
+</script>

@@ -1,0 +1,32 @@
+---
+const { title, sectionId } = Astro.props;
+---
+
+<div class="text-center mb-16 section-heading" data-sectionid={sectionId}>
+	<h2
+		class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
+	>
+		{title}
+	</h2>
+	<div class="section-title-underline"></div>
+</div>
+
+<script>
+	import { gsap } from "gsap";
+
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+
+	const sectionHeading = document.querySelectorAll(`.section-heading`);
+	sectionHeading.forEach((heading) => {
+		gsap.from(heading, {
+			scrollTrigger: {
+				trigger: heading,
+				toggleActions: "restart none none reverse",
+			},
+			y: 100,
+			duration: 1,
+			ease: "back.out",
+		});
+	});
+</script>

@@ -24,6 +24,7 @@ import supabase from "@/images/supabase.svg";
 import git from "@/images/git.svg";
 import github from "@/images/github.svg";
 import tanstack from "@/images/tanstack.svg";
+import SectionHeading from "./SectionHeading.astro";
 
 const skillCategories = [
 	{
@@ -163,15 +164,8 @@ const skillCategories = [
 
 <section id="skills" class="w-full py-16 md:py-24 border-b-2 border-border/60">
 	<div class="container mx-auto px-4">
-		<div class="text-center mb-16">
-			<h2
-				class="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl"
-			>
-				My Tech Skills
-			</h2>
-			<div class="section-title-underline"></div>
-		</div>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+		<SectionHeading title="My Tech Skills" sectionId="skills" />
+		<div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
 			{
 				skillCategories.map((category) => (
 					<div class="futuristic-card p-6 rounded-lg">
@@ -200,3 +194,25 @@ const skillCategories = [
 		</div>
 	</div>
 </section>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+
+	//stagger animation of cards on section scroll
+
+	gsap.from(`section#skills .futuristic-card`, {
+		x: -100,
+		duration: 1,
+		ease: "back.out",
+		stagger: 0.2,
+		opacity: 0,
+		scrollTrigger: {
+			trigger: "section#skills .grid",
+			toggleActions: "restart resume none reverse",
+			start: "top 80%",
+			end: "bottom 20%",
+		},
+	});
+</script>
