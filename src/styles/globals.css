@@ -57,7 +57,8 @@
 }
 
 .dark,
-[data-theme="dark"] {
+[data-theme="dark"],
+:root:has([data-theme="dark"]:checked) {
 	--background: hsl(224 71.4% 4.1%);
 	--foreground: hsl(210 20% 98%);
 	--card: hsl(224 71.4% 5.5%);
@@ -79,7 +80,8 @@
 	--ring: color-mix(in hsl, var(--primary) 70%, transparent);
 }
 .light,
-[data-theme="light"] {
+[data-theme="light"],
+:root:has([data-theme="light"]:checked) {
 	--background: hsl(210 20% 98%);
 	--foreground: hsl(224 71.4% 4.1%);
 	--card: hsl(210 20% 98%);
@@ -101,7 +103,8 @@
 	--ring: color-mix(in hsl, var(--primary) 70%, transparent);
 }
 .rosey,
-[data-theme="rosey"] {
+[data-theme="rosey"],
+:root:has([data-theme="rosey"]:checked) {
 	--background: hsl(224 71.4% 4.1%);
 	--foreground: hsl(210 20% 98%);
 	--card: hsl(224 71.4% 5.5%);
