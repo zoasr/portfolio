@@ -61,6 +61,11 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 		</nav>
 		<span class="md:inline hidden">
 			<noscript>
+				<style>
+					noscript {
+						display: contents;
+					}
+				</style>
 				<div
 					id="themeselector"
 					class="flex gap-2 items-center justify-center flex-wrap"
@@ -211,8 +216,5 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 <style>
 	header:has(input[name="menutoggle"]:checked) #mobile-nav-menu {
 		@apply h-[350px] opacity-100 pointer-events-auto;
-	}
-	noscript {
-		display: contents;
 	}
 </style>
