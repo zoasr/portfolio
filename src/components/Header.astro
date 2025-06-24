@@ -60,7 +60,7 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 			}
 		</nav>
 		<span class="md:inline hidden">
-			<noscript class="contents">
+			<noscript>
 				<div
 					id="themeselector"
 					class="flex gap-2 items-center justify-center flex-wrap"
@@ -88,7 +88,7 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 			</noscript>
 			<ThemeSwitcher client:only theme={theme} />
 		</span>
-		<noscript class="contents">
+		<noscript>
 			<label class="text-primary md:hidden cursor-pointer">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +120,7 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 			/>
 		</MenuToggle>
 	</div>
-	<noscript class="contents">
+	<noscript>
 		<div
 			class="md:hidden absolute top-full left-0 w-full max-h-fit bg-background/90 backdrop-blur-2xl border-b border-border/40 transition-all duration-200"
 			class:list={["h-0 opacity-0 pointer-events-none"]}
@@ -211,5 +211,8 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 <style>
 	header:has(input[name="menutoggle"]:checked) #mobile-nav-menu {
 		@apply h-[350px] opacity-100 pointer-events-auto;
+	}
+	noscript {
+		display: contents;
 	}
 </style>
