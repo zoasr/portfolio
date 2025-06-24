@@ -126,6 +126,16 @@
 	--ring: color-mix(in hsl, var(--primary) 70%, transparent);
 }
 
+:root:has([data-theme="light"]:checked) {
+	background-image: url("/theme?theme=light");
+}
+:root:has([data-theme="dark"]:checked) {
+	background-image: url("/theme?theme=dark");
+}
+:root:has([data-theme="rosey"]:checked) {
+	background-image: url("/theme?theme=rosey");
+}
+
 @custom-variant dark (&:where(.dark, .dark *), &:where([data-theme="dark"], [data-theme="dark"] *));
 @custom-variant light (&:where(.light, .light *), &:where([data-theme="light"], [data-theme="light"] *));
 
