@@ -14,10 +14,6 @@ const { sectionId } = Astro.props;
 		`${sectionId}-svg-container`,
 	]}
 >
-	<span class="back-objects"></span>
-	<span class="back-objects"></span>
-	<span class="back-objects"></span>
-	<span class="back-objects"></span>
 	<svg
 		class:list={[
 			`${sectionId}-svg-grid`,
@@ -28,9 +24,6 @@ const { sectionId } = Astro.props;
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<defs>
-			<filter id="blur" x="-100%" y="-100%" width="300%" height="300%">
-				<feGaussianBlur stdDeviation="200"></feGaussianBlur>
-			</filter>
 			<pattern
 				id="smallGrid"
 				width={gridSize}
@@ -58,80 +51,43 @@ const { sectionId } = Astro.props;
 </div>
 
 <style>
-	.back-objects {
-		position: absolute;
-		display: block;
-		background: var(--primary);
-		filter: url(#blur);
-		width: 200px;
-		height: 200px;
-		border-radius: 50%;
-		z-index: 1;
-		opacity: 0.3;
+	@property --angle {
+		syntax: "<angle>";
+		initial-value: 0deg;
+		inherits: true;
 	}
-	.back-objects:nth-child(1) {
-		top: 0;
-		left: 0;
-		width: 1000px;
-		height: 1000px;
-		animation: move-around 5s ease-in-out infinite;
-	}
-	.back-objects:nth-child(2) {
-		top: 1%;
-		right: 1%;
-		animation: move-around-2 5s ease-in-out infinite;
-	}
-	.back-objects:nth-child(3) {
-		bottom: 1%;
-		left: 1%;
-		animation: move-around-3 5s ease-in-out infinite;
-	}
-	.back-objects:nth-child(4) {
-		bottom: 1%;
-		right: 1%;
-		width: 1000px;
-		height: 1000px;
-		animation: move-around 5s ease-in-out infinite;
+	div[class$="-svg-container"] {
+		background: linear-gradient(
+				color-mix(in hsl, var(--primary) 20%, transparent),
+				color-mix(in hsl, var(--primary) 20%, transparent)
+			),
+			conic-gradient(
+				from calc(var(--angle) + 45deg) at 0% 0%,
+				transparent,
+				color-mix(in hsl, var(--primary) 30%, transparent) 10%,
+				color-mix(in hsl, var(--primary) 0%, transparent) 50%,
+				transparent 100%
+			),
+			conic-gradient(
+				from calc(var(--angle) + 180deg) at 100% 100%,
+				transparent,
+				color-mix(in hsl, var(--foreground) 0%, transparent) 10%,
+				color-mix(in hsl, var(--foreground) 30%, transparent) 50%,
+				transparent 100%
+			);
+		animation: rotate 20s linear infinite;
 	}
 
-	@keyframes move-around {
-		0% {
-			transform: translate(0, 0);
+	@keyframes rotate {
+		from {
+			--angle: 0deg;
 		}
-		50% {
-			transform: translate(150px, 150px);
-		}
-		100% {
-			transform: translate(0, 0);
-		}
-	}
-	@keyframes move-around-2 {
-		0% {
-			transform: translate(0, 0);
-		}
-		50% {
-			transform: translate(-150px, -150px);
-		}
-		100% {
-			transform: translate(0, 0);
-		}
-	}
-	@keyframes move-around-3 {
-		0% {
-			transform: translate(0, 0);
-		}
-		50% {
-			transform: translate(150px, -150px);
-		}
-		100% {
-			transform: translate(0, 0);
+		to {
+			--angle: 360deg;
 		}
 	}
 </style>
-
 <script>
-	import { gsap } from "gsap";
-
 	document.addEventListener("DOMContentLoaded", () => {
 		const mouseMoveListeners = new Map<Element, (e: MouseEvent) => void>();
 
@@ -151,12 +107,10 @@ const { sectionId } = Astro.props;
 				const xPercentage = (mouseX / rect.width) * 100;
 				const yPercentage = (mouseY / rect.height) * 100;
 
-				gsap.to(container, {
-					"--mx": `${xPercentage}%`,
-					"--my": `${yPercentage}%`,
-					duration: 0.1,
-					ease: "power2.out",
-				});
+				// @ts-ignore
+				container.style.setProperty("--mx", `${xPercentage}%`)!;
+				// @ts-ignore
+				container.style.setProperty("--my", `${yPercentage}%`)!;
 			};
 			mouseMoveListeners.set(container, handleMouseMove);
 		});

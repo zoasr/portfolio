@@ -2,6 +2,26 @@
 const { title, sectionId } = Astro.props;
 ---
 
+<svg width="0" height="0">
+	<filter
+		opacity="0.5"
+		id="glow-blur"
+		width="300%"
+		height="300%"
+		x="-100%"
+		y="-100%"
+	>
+		<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"
+		></feGaussianBlur>
+		<feColorMatrix
+			in="blur"
+			type="matrix"
+			values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.7 0"
+		></feColorMatrix>
+		<feComposite in="SourceGraphic" operator="lighter"></feComposite>
+	</filter>
+</svg>
+
 <div
 	class="text-center mb-16 section-heading mx-auto"
 	data-sectionid={sectionId}
@@ -23,6 +43,10 @@ const { title, sectionId } = Astro.props;
 		syntax: "<angle>";
 		initial-value: 0deg;
 		inherits: true;
+	}
+
+	.section-heading {
+		filter: url(#glow-blur);
 	}
 
 	.heading-mask {
@@ -71,10 +95,6 @@ const { title, sectionId } = Astro.props;
 			.heading-mask {
 				--clipping-width: 180deg;
 			}
-		}
-
-		&:hover {
-			text-shadow: 0 0 10px var(--primary);
 		}
 	}
 </style>
