@@ -20,7 +20,7 @@
     "@iconify-json/streamline-pixel": "^1.2.0",
     "@kobalte/core": "^0.13.10",
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^5.10.0",
+    "astro": "^5.11.0",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
