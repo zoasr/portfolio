@@ -1,8 +1,8 @@
 ---
 import "@/styles/globals.css";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/footer.astro";
 import { ClientRouter } from "astro:transitions";
+import Footer from "@/components/footer.astro";
+import Header from "@/components/Header.astro";
 
 interface Props {
 	title?: string | "zoasr's Portfolio";
@@ -12,8 +12,8 @@ const { title }: Props = Astro.props;
 
 const theme = Astro.cookies.get("theme")?.value;
 const squareOffset = 1;
-let radius = 2;
-let path = [
+const radius = 2;
+const path = [
 	`M ${squareOffset} ${squareOffset}`,
 	`h ${100 - squareOffset - radius * 2}`,
 	`a ${radius} ${radius} 0 0 1 ${radius} ${radius}`,
@@ -149,39 +149,47 @@ let path = [
 <script>
 	import { gsap } from "gsap";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	gsap.registerPlugin(ScrollTrigger);
 
-	gsap.to(".scroll-paths", {
-		strokeDasharray: "1000 500000",
-		ease: "linear",
+	document.addEventListener("astro:page-load", () => {
+		gsap.registerPlugin(ScrollTrigger);
+		gsap.to(".scroll-paths", {
+			strokeDasharray: "1000 500000",
+			ease: "linear",
 
-		scrollTrigger: {
-			scrub: -2,
-			start: "top 0%",
-			end: "bottom 100%",
-		},
-		// reduce opacity at last 20 %
-	});
+			scrollTrigger: {
+				scrub: -2,
+				start: "top 0%",
+				end: "bottom 100%",
+			},
+			// reduce opacity at last 20 %
+		});
 
-	gsap.to(".scroll-paths-outer", {
-		strokeDasharray: "1700 500000",
-		ease: "linear",
+		gsap.to(".scroll-paths-outer", {
+			strokeDasharray: "1700 500000",
+			ease: "linear",
 
-		scrollTrigger: {
-			scrub: true,
-			start: "top 0%",
-			end: "bottom 100%",
-		},
-	});
+			scrollTrigger: {
+				scrub: true,
+				start: "top 0%",
+				end: "bottom 100%",
+			},
+		});
 
-	gsap.to("#scroll-path-svg", {
-		opacity: 0.2,
-		scale: 0.5,
-		scrollTrigger: {
-			trigger: "footer",
-			start: "top 90%",
-			end: "bottom 100%",
-			scrub: true,
-		},
+		gsap.to("#scroll-path-svg", {
+			opacity: 0.2,
+			scale: 0.5,
+			scrollTrigger: {
+				trigger: "footer",
+				start: "top 90%",
+				end: "bottom 100%",
+				scrub: true,
+			},
+		});
+
+		document.addEventListener("astro:before-swap", () => {
+			gsap.killTweensOf(".scroll-paths");
+			gsap.killTweensOf(".scroll-paths-outer");
+			gsap.killTweensOf("#scroll-path-svg");
+		});
 	});
 </script>

@@ -109,7 +109,7 @@ import SectionBackground from "./section-background.astro";
 	import { SplitText } from "gsap/SplitText";
 	gsap.registerPlugin(SplitText);
 
-	document.addEventListener("DOMContentLoaded", () => {
+	document.addEventListener("astro:page-load", () => {
 		const sectionheading = document.querySelector(
 			`section#hero .section-heading`
 		);
@@ -135,6 +135,10 @@ import SectionBackground from "./section-background.astro";
 			stagger: 0.05,
 			ease: "back",
 			duration: 1,
+		});
+
+		document.addEventListener("astro:before-swap", () => {
+			tl.kill();
 		});
 	});
 </script>
