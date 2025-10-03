@@ -4,7 +4,9 @@
 import { Icon } from "astro-icon/components";
 import lastfmViewer from "@/images/@lastfm-viewer.webp";
 import astro from "@/images/astro.svg";
+import clinicRun from "@/images/clinic-run.webp";
 import cpp from "@/images/cpp.svg";
+import hono from "@/images/hono.svg";
 import iot from "@/images/iot.svg";
 import machlist from "@/images/machlist.webp";
 import opensource from "@/images/oss.svg";
@@ -16,6 +18,7 @@ import supabase from "@/images/supabase.svg";
 import svelte from "@/images/svelte.svg";
 import tailwind from "@/images/tailwind.svg";
 import tanstack from "@/images/tanstack.svg";
+import trpc from "@/images/trpc.svg";
 import ts from "@/images/ts.svg";
 import SectionHeading from "./SectionHeading.astro";
 import SectionBackground from "./section-background.astro";
@@ -36,6 +39,22 @@ const projects = [
 		],
 		liveUrl: "https://supa-shop.cloudflare-untying955.workers.dev/",
 		githubUrl: "https://github.com/zoasr/supa-shop",
+	},
+	{
+		title: "clinic-run",
+		description:
+			"An homage to the now discontinued hospitalrun project, built with React, Bun, and SQLite, and works entirely offline.",
+		image: clinicRun,
+		tags: [
+			{ name: "React", icon: react },
+			{ name: "TailwindCSS", icon: tailwind },
+			{ name: "TanStack Router", icon: tanstack },
+			{ name: "TypeScript", icon: ts },
+			{ name: "tRPC", icon: trpc },
+			{ name: "hono", icon: hono },
+		],
+		liveUrl: "https://clinic-run-demo.vercel.app/",
+		githubUrl: "https://github.com/zoasr/clinic-run",
 	},
 	{
 		title: "@lastfm-viewer",
@@ -138,7 +157,7 @@ const projects = [
 			{
 				projects.map((project) => (
 					<div class="futuristic-card flex flex-col overflow-hidden rounded-lg group">
-						<div class="relative overflow-hidden">
+						<div class="relative ">
 							{project.image !== null && (
 								<>
 									<img
@@ -146,7 +165,7 @@ const projects = [
 										alt={project.title}
 										width={500}
 										height={300}
-										class="object-cover w-full h-52 transition-transform duration-500 group-hover:scale-105"
+										class="object-cover w-full transition-transform duration-500 group-hover:scale-105 aspect-[16/9]"
 									/>
 									<div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
 								</>
