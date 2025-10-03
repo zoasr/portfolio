@@ -101,20 +101,26 @@ const { title, sectionId } = Astro.props;
 
 <script>
 	import { gsap } from "gsap";
-
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	gsap.registerPlugin(ScrollTrigger);
 
-	const sectionHeading = document.querySelectorAll(`.section-heading`);
-	sectionHeading.forEach((heading) => {
-		gsap.from(heading, {
-			scrollTrigger: {
-				trigger: heading,
-				toggleActions: "restart none none reverse",
-			},
-			y: 100,
-			duration: 1,
-			ease: "back.out",
+	document.addEventListener("astro:page-load", () => {
+		gsap.registerPlugin(ScrollTrigger);
+		const sectionHeading = document.querySelectorAll(`.section-heading`);
+		sectionHeading.forEach((heading) => {
+			gsap.from(heading, {
+				scrollTrigger: {
+					trigger: heading,
+					toggleActions: "restart none none reverse",
+				},
+				y: 100,
+				duration: 1,
+				ease: "back.out",
+			});
+		});
+		document.addEventListener("astro:before-swap", () => {
+			sectionHeading.forEach((heading) => {
+				gsap.killTweensOf(heading);
+			});
 		});
 	});
 </script>
