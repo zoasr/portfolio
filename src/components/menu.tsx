@@ -1,8 +1,7 @@
 import { For } from "solid-js";
 import { createStore } from "solid-js/store";
-import { Icon } from "@iconify-icon/solid";
-import ThemeSwitcher from "./theme-switcher";
 import type { Theme } from "./Header.astro";
+import ThemeSwitcher from "./theme-switcher";
 
 export const [menuStore, setMenuStore] = createStore({
 	isOpen: false,
@@ -17,7 +16,11 @@ export const toggleMenu = () => {
 export const MenuToggle = ({ open, close }: any) => {
 	return (
 		<div class="md:hidden">
-			<button class="text-muted-foreground p-2" onClick={toggleMenu}>
+			<button
+				class="text-muted-foreground p-2"
+				onClick={toggleMenu}
+				type="button"
+			>
 				{menuStore.isOpen ? close : open}
 			</button>
 		</div>
