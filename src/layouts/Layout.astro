@@ -25,6 +25,9 @@ const path = [
 	`a ${radius} ${radius} 0 0 1 ${radius} -${radius}`,
 	`Z`,
 ].join(" ");
+
+const GOOGLE_SITE_VERIFICATION = import.meta.env.GOOGLE_SITE_VERIFICATION;
+
 ---
 
 <html lang="en" data-theme={theme === "system" ? "" : theme}>
@@ -37,6 +40,7 @@ const path = [
 			name="description"
 			content="Hi, I'm zoasr, i design, build and animate web applications and websites"
 		/>
+		<meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
 		<meta name="keywords" content="zoasr, portfolio" />
 		<meta name="author" content="zoasr" />
 		<meta property="og:title" content="zoasr's Portfolio" />
