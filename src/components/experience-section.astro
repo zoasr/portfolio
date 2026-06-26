@@ -6,167 +6,189 @@ import opensource from "@/images/oss.svg";
 import astro from "@/images/astro.svg";
 import php from "@/images/php.svg";
 import mysql from "@/images/mysql.svg";
+import tanstack from "@/images/tanstack.svg";
+import nextjs from "@/images/nextjs.svg";
+import expo from "@/images/expo.svg";
+import jquery from "@/images/jquery.svg";
 import SectionHeading from "./SectionHeading.astro";
 import SectionBackground from "./section-background.astro";
 
 const experiences = [
-	{
-		company: "Recyclink, Machlist",
-		role: "Front-End Web Developer",
-		period: "Feb 2024 - May 2024",
-		location: "Egypt",
-		description:
-			"Worked as a Front-End Web developer designing and managing content for an industrial company's new Websites; Built and maintained using the Astro framework. Projects: Machlist, Recyclink.",
-		tags: [
-			{ name: "Astro", icon: astro },
-			{ name: "Frontend", icon: null },
-			{ name: "UI/UX", icon: null },
-			{ name: "Content Management", icon: null },
-		],
-	},
-	{
-		company: "@lastfm-viewer (Personal Project)", // Using title from CV's project section for consistency if it's the same
-		role: "Maintainer",
-		period: "December 2023 – Present",
-		location: "Remote",
-		description:
-			"Maintainer of @lastfm-viewer, a collection of UI web components hosted on npm to view recent scrobbles for a Last.fm user, built for React, Solid, and Svelte frameworks.",
-		tags: [
-			{ name: "React", icon: react },
-			{ name: "Solid.js", icon: solid },
-			{ name: "Svelte", icon: svelte },
-			{ name: "NPM", icon: null },
-			{ name: "Open Source", icon: opensource },
-			{ name: "API Integration", icon: null },
-		],
-	},
-	{
-		company: "Military Service",
-		role: "PHP (XAMPP) Full Stack Developer",
-		period: "July 2024 - June 2025 (Expected)",
-		location: "Egypt",
-		description:
-			"Developed and maintained a full stack web app using the XAMPP stack, hosted on a local network during my military service.",
-		tags: [
-			{ name: "PHP", icon: php },
-			{ name: "XAMPP", icon: null },
-			{ name: "Full Stack", icon: null },
-			{ name: "MySQL", icon: mysql },
-			{ name: "Apache", icon: null },
-		],
-	},
+    {
+        company: "AdShift Marketing Agency",
+        role: "Front-End Web Developer",
+        period: "Dec 2025 – Present",
+        location: "Egypt",
+        description:
+            "Developed and maintained six production web applications using TanStack Start and Next.js with Server-Side Rendering (SSR). Built six administrative dashboards for business operations and user management. Developed React Native mobile applications using Expo. Integrated frontend applications with a Laravel backend through REST APIs. Applied SSR, client-side routing, and state management for improved performance and SEO. Collaborated closely with designers and backend developers in an Agile environment.",
+        tags: [
+            { name: "TanStack Start", icon: tanstack },
+            { name: "Next.js", icon: nextjs },
+            { name: "React", icon: react },
+            { name: "React Native", icon: react },
+            { name: "Expo", icon: expo },
+            { name: "SSR", icon: null },
+            { name: "SEO", icon: null },
+            { name: "REST APIs", icon: null },
+            { name: "Agile", icon: null },
+        ],
+    },
+    {
+        company: "Ain Shams Hospitals",
+        role: "IT Engineer & Database Manager",
+        period: "Oct 2025 – Dec 2025",
+        location: "Egypt",
+        description:
+            "Managed hospital databases and IT infrastructure. Solved technical issues related to patient management and medical records. Maintained system reliability and operational efficiency.",
+        tags: [
+            { name: "Database Management", icon: null },
+            { name: "IT Infrastructure", icon: null },
+            { name: "MySQL", icon: mysql },
+            { name: "PHP", icon: php },
+        ],
+    },
+    {
+        company: "Military Service",
+        role: "PHP (XAMPP) Full Stack Developer",
+        period: "Jul 2024 – Jun 2025",
+        location: "Egypt",
+        description:
+            "Developed and maintained a full-stack web application using PHP, MySQL, jQuery, and XAMPP. Deployed the application on a secure local network to support internal operations. Optimized SQL queries, improving application performance by 60%. Built frontend features with jQuery and backend functionality with PHP/MySQL.",
+        tags: [
+            { name: "PHP", icon: php },
+            { name: "XAMPP", icon: null },
+            { name: "Full Stack", icon: null },
+            { name: "MySQL", icon: mysql },
+            { name: "jQuery", icon: jquery },
+        ],
+    },
+    {
+        company: "Recyclink / Machlist",
+        role: "Front-End Web Developer",
+        period: "Feb 2024 – May 2024",
+        location: "Giza, Egypt",
+        description:
+            "Redesigned and managed content for industrial company websites. Built and maintained multiple websites using Astro 2. Designed user interfaces and ensured content consistency across pages. Optimized site structure and metadata for improved SEO, increasing search visibility and traffic. Projects: Machlist, Recyclink.",
+        tags: [
+            { name: "Astro", icon: astro },
+            { name: "Frontend", icon: null },
+            { name: "UI/UX", icon: null },
+            { name: "SEO", icon: null },
+        ],
+    },
 ];
 ---
 
 <section id="experience" class="w-full py-16 md:py-24 relative isolate">
-	<SectionBackground sectionId="experience" />
-	<div class="container mx-auto px-4">
-		<SectionHeading title="My Experience" sectionId="experience" />
-		<div class="relative max-w-3xl mx-auto">
-			<div class="futuristic-timeline-line"></div>
-			{
-				experiences.map((exp, index) => (
-					<div class="relative mb-12 group">
-						<div class="futuristic-timeline-node group-hover:shadow-[0_0_15px_3px_var(--primary)] transition-shadow" />
-						<div
-							class={`flex items-start ${
-								index % 2 === 0
-									? "md:flex-row-reverse md:text-right"
-									: "md:text-left"
-							}`}
-						>
-							<div class="hidden md:block w-1/2" />{" "}
-							{/* Spacer for desktop */}
-							<div class="w-full md:w-1/2 md:px-8 px-4 py-2">
-								<div class="futuristic-card p-6 rounded-lg relative z-10 ">
-									<p class="text-sm text-primary font-semibold">
-										{exp.period}
-									</p>
-									<h3 class="text-xl font-bold text-foreground mt-1">
-										{exp.role}
-									</h3>
-									<p class="text-lg font-medium text-muted-foreground">
-										{exp.company} -{" "}
-										<span class="text-sm">
-											{exp.location}
-										</span>
-									</p>
-									<p class="mt-3 text-sm text-muted-foreground">
-										{exp.description}
-									</p>
-									{exp.tags && exp.tags.length > 0 && (
-										<div class="mt-3 flex flex-wrap gap-2">
-											{exp.tags.map((tag) => (
-												<span class="card-tag flex gap-1 text-[clamp(1rem,1vw,2rem)] items-center border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
-													{tag.icon && (
-														<tag.icon class="size-[clamp(0.6rem,1vw,1rem)]" />
-													)}
-													{tag.name}
-												</span>
-											))}
-										</div>
-									)}
-								</div>
-							</div>
-						</div>
-					</div>
-				))
-			}
-		</div>
-	</div>
+    <SectionBackground sectionId="experience" />
+    <div class="container mx-auto px-4">
+        <SectionHeading title="My Experience" sectionId="experience" />
+        <div class="relative max-w-3xl mx-auto">
+            <div class="futuristic-timeline-line"></div>
+            {
+                experiences.map((exp, index) => (
+                    <div class="relative mb-12 group">
+                        <div class="futuristic-timeline-node group-hover:shadow-[0_0_15px_3px_var(--primary)] transition-shadow" />
+                        <div
+                            class={`flex items-start ${
+                                index % 2 === 0
+                                    ? "md:flex-row-reverse md:text-right"
+                                    : "md:text-left"
+                            }`}
+                        >
+                            <div class="hidden md:block w-1/2" />{" "}
+                            {/* Spacer for desktop */}
+                            <div class="w-full md:w-1/2 md:px-8 px-4 py-2">
+                                <div class="futuristic-card p-6 rounded-lg relative z-10 ">
+                                    <p class="text-sm text-primary font-semibold">
+                                        {exp.period}
+                                    </p>
+                                    <h3 class="text-xl font-bold text-foreground mt-1">
+                                        {exp.role}
+                                    </h3>
+                                    <p class="text-lg font-medium text-muted-foreground">
+                                        {exp.company} -{" "}
+                                        <span class="text-sm">
+                                            {exp.location}
+                                        </span>
+                                    </p>
+                                    <p class="mt-3 text-sm text-muted-foreground">
+                                        {exp.description}
+                                    </p>
+                                    {exp.tags && exp.tags.length > 0 && (
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            {exp.tags.map((tag) => (
+                                                <span class="card-tag flex gap-1 text-[clamp(1rem,1vw,2rem)] items-center border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
+                                                    {tag.icon && (
+                                                        <tag.icon class="size-[clamp(0.6rem,1vw,1rem)]" />
+                                                    )}
+                                                    {tag.name}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </section>
 
 <style>
-	.card-tag {
-		box-shadow: inset 0 0 0 1px
-			color-mix(in hsl, var(--primary) 10%, transparent);
-	}
-	.card-tag:hover {
-		box-shadow: inset 0 -1px 0 1px color-mix(in hsl, var(--primary) 20%, transparent);
-	}
+    .card-tag {
+        box-shadow: inset 0 0 0 1px
+            color-mix(in hsl, var(--primary) 10%, transparent);
+    }
+    .card-tag:hover {
+        box-shadow: inset 0 -1px 0 1px
+            color-mix(in hsl, var(--primary) 20%, transparent);
+    }
 </style>
 
 <script>
-	import { gsap } from "gsap";
-	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	gsap.registerPlugin(ScrollTrigger);
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
 
-	let mm = gsap.matchMedia();
-	const expCards = document.querySelectorAll(
-		`section#experience .futuristic-card`
-	);
+    let mm = gsap.matchMedia();
+    const expCards = document.querySelectorAll(
+        `section#experience .futuristic-card`,
+    );
 
-	mm.add("(width >= 48rem)", () => {
-		expCards.forEach((card, index) => {
-			gsap.from(card, {
-				x: index % 2 === 0 ? -100 : 100,
-				duration: 0.5,
-				ease: "back",
-				opacity: 0,
-				scrollTrigger: {
-					trigger: card,
-					toggleActions: "restart resume none reverse",
-					start: "top 80%",
-					end: "bottom 20%",
-				},
-			});
-		});
-	});
+    mm.add("(width >= 48rem)", () => {
+        expCards.forEach((card, index) => {
+            gsap.from(card, {
+                x: index % 2 === 0 ? -100 : 100,
+                duration: 0.5,
+                ease: "back",
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: card,
+                    toggleActions: "restart resume none reverse",
+                    start: "top 80%",
+                    end: "bottom 20%",
+                },
+            });
+        });
+    });
 
-	mm.add("(width < 48rem)", () => {
-		expCards.forEach((card, index) => {
-			gsap.from(card, {
-				y: 100,
-				duration: 0.5,
-				ease: "back",
-				opacity: 0,
-				scrollTrigger: {
-					trigger: card,
-					toggleActions: "restart resume none reverse",
-					start: "top 80%",
-					end: "bottom 20%",
-				},
-			});
-		});
-	});
+    mm.add("(width < 48rem)", () => {
+        expCards.forEach((card, index) => {
+            gsap.from(card, {
+                y: 100,
+                duration: 0.5,
+                ease: "back",
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: card,
+                    toggleActions: "restart resume none reverse",
+                    start: "top 80%",
+                    end: "bottom 20%",
+                },
+            });
+        });
+    });
 </script>

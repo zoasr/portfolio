@@ -20,248 +20,258 @@ import tailwind from "@/images/tailwind.svg";
 import tanstack from "@/images/tanstack.svg";
 import trpc from "@/images/trpc.svg";
 import ts from "@/images/ts.svg";
+import zustand from "@/images/zustand.svg";
+import drizzle from "@/images/drizzle.svg";
+import sqlite from "@/images/sqlite.svg";
+import npm from "@/images/npm.svg";
+import lastfm from "@/images/lastfm.svg";
+import arduino from "@/images/arduino.svg";
+import raspberrypi from "@/images/raspberrypi.svg";
 import SectionHeading from "./SectionHeading.astro";
 import SectionBackground from "./section-background.astro";
 
 const projects = [
-	{
-		title: "supa-shop",
-		description:
-			"A modern, full-stack e-commerce platform built with React, TypeScript, and Supabase. Features real-time inventory, secure auth, and responsive design.",
-		image: supaShop,
-		tags: [
-			{ name: "React", icon: react },
-			{ name: "TailwindCSS", icon: tailwind },
-			{ name: "TanStack Router", icon: tanstack },
-			{ name: "i18n", icon: null },
-			{ name: "Supabase", icon: supabase },
-			{ name: "TypeScript", icon: ts },
-		],
-		liveUrl: "https://supa-shop.cloudflare-untying955.workers.dev/",
-		githubUrl: "https://github.com/zoasr/supa-shop",
-	},
-	{
-		title: "clinic-run",
-		description:
-			"An homage to the now discontinued hospitalrun project, built with React, Bun, and SQLite, and works entirely offline.",
-		image: clinicRun,
-		tags: [
-			{ name: "React", icon: react },
-			{ name: "TailwindCSS", icon: tailwind },
-			{ name: "TanStack Router", icon: tanstack },
-			{ name: "TypeScript", icon: ts },
-			{ name: "tRPC", icon: trpc },
-			{ name: "hono", icon: hono },
-		],
-		liveUrl: "https://clinic-run-demo.vercel.app/",
-		githubUrl: "https://github.com/zoasr/clinic-run",
-	},
-	{
-		title: "@lastfm-viewer",
-		description:
-			"UI web components (npm package) to view recent scrobbles for a Last.fm user. Built for React, Solid, and Svelte.",
-		image: lastfmViewer,
-		tags: [
-			{ name: "React", icon: react },
-			{ name: "Solid.js", icon: solid },
-			{ name: "Svelte", icon: svelte },
-			{ name: "NPM", icon: null },
-			{ name: "API", icon: null },
-			{ name: "Last.fm", icon: null },
-		],
-		liveUrl: "https://lastfm-viewer.vercel.app/",
-		githubUrl: "https://github.com/zoasr/lastfm-viewer",
-	},
-	{
-		title: "libmatrix",
-		description:
-			"A lightweight, open-source C++ library for various matrix computations including creation, basic operations, and advanced functions.",
-		image: null,
-		tags: [
-			{ name: "C++", icon: cpp },
-			{ name: "Library", icon: null },
-			{ name: "Mathematics", icon: null },
-			{ name: "Open Source", icon: opensource },
-		],
-		liveUrl: null,
-		githubUrl: "https://github.com/ZOASR/libmatrix",
-	},
-	{
-		title: "FishBot (Graduation Project)",
-		description:
-			"Fully automated monitoring system for fish farms with real-time analytics for water quality, fish health, and automated controls.",
-		image: null,
-		tags: [
-			{ name: "IoT", icon: null },
-			{ name: "Arduino", icon: null },
-			{ name: "RaspberryPi", icon: null },
-			{ name: "MQTT", icon: null },
-			{ name: "C++", icon: cpp },
-			{ name: "Programming", icon: null },
-		],
-		liveUrl: null,
-		githubUrl: null,
-	},
-	{
-		title: "Smart Home System",
-		description:
-			"Comprehensive smart home project integrating IoT devices and automation for enhanced convenience, energy efficiency, and security.",
-		image: null,
-		tags: [
-			{ name: "Smart Home", icon: null },
-			{ name: "IoT", icon: null },
-			{ name: "Arduino", icon: null },
-			{ name: "C++", icon: cpp },
-			{ name: "Programming", icon: null },
-		],
-		liveUrl: null,
-		githubUrl: null,
-	},
-	{
-		title: "Recyclink",
-		description:
-			"Industrial company website. Designed and managed content, built with Astro.",
-		image: recyclink,
-		tags: [
-			{ name: "Astro", icon: astro },
-			{ name: "Frontend", icon: null },
-			{ name: "Content Management", icon: null },
-		],
-		liveUrl: "https://recyc-link.vercel.app/en/",
-		githubUrl: "https://github.com/zoasr/recyc-link",
-	},
-	{
-		title: "Machlist",
-		description:
-			"Industrial company website. Designed and managed content, built with Astro.",
-		image: machlist,
-		tags: [
-			{ name: "Astro", icon: astro },
-			{ name: "Frontend", icon: null },
-			{ name: "UI/UX", icon: null },
-		],
-		liveUrl: "https://machlist.vercel.app/en/",
-		githubUrl: "https://github.com/zoasr/machlist",
-	},
+    {
+        title: "supa-shop",
+        description:
+            "Modern e-commerce application focused on performance and user experience. Real-time inventory management, secure authentication, responsive UI, and i18n localization.",
+        image: supaShop,
+        tags: [
+            { name: "React", icon: react },
+            { name: "TailwindCSS", icon: tailwind },
+            { name: "TanStack Router", icon: tanstack },
+            { name: "i18n", icon: null },
+            { name: "Supabase", icon: supabase },
+            { name: "TypeScript", icon: ts },
+            { name: "Zustand", icon: zustand },
+        ],
+        liveUrl: "https://supa-shop.cloudflare-untying955.workers.dev/",
+        githubUrl: "https://github.com/zoasr/supa-shop",
+    },
+    {
+        title: "clinic-run",
+        description:
+            "A comprehensive offline clinic management system designed to operate without internet connectivity. Supports patient management, appointments, medical records, prescriptions, invoices, lab tests, medication inventory, and user administration.",
+        image: clinicRun,
+        tags: [
+            { name: "React", icon: react },
+            { name: "TailwindCSS", icon: tailwind },
+            { name: "TanStack Router", icon: tanstack },
+            { name: "TypeScript", icon: ts },
+            { name: "tRPC", icon: trpc },
+            { name: "hono", icon: hono },
+            { name: "Drizzle ORM", icon: drizzle },
+            { name: "SQLite", icon: sqlite },
+        ],
+        liveUrl: "https://clinic-run-demo.vercel.app/",
+        githubUrl: "https://github.com/zoasr/clinic-run",
+    },
+    {
+        title: "@lastfm-viewer",
+        description:
+            "Reusable UI component library published to npm for displaying Last.fm user scrobbles. Supports React, Solid, and Svelte with real-time Last.fm API integration.",
+        image: lastfmViewer,
+        tags: [
+            { name: "React", icon: react },
+            { name: "Solid.js", icon: solid },
+            { name: "Svelte", icon: svelte },
+            { name: "NPM", icon: npm },
+            { name: "API", icon: null },
+            { name: "Last.fm", icon: lastfm },
+        ],
+        liveUrl: "https://lastfm-viewer.vercel.app/",
+        githubUrl: "https://github.com/zoasr/lastfm-viewer",
+    },
+    {
+        title: "libmatrix",
+        description:
+            "A lightweight, open-source C++ library for various matrix computations including creation, initialization, addition, subtraction, multiplication, decomposition, and eigenvalue calculation.",
+        image: null,
+        tags: [
+            { name: "C++", icon: cpp },
+            { name: "Library", icon: null },
+            { name: "Mathematics", icon: null },
+            { name: "Open Source", icon: opensource },
+        ],
+        liveUrl: null,
+        githubUrl: "https://github.com/ZOASR/libmatrix",
+    },
+    {
+        title: "Smart Fish Farm System",
+        description:
+            "Real-time water quality monitoring with predictive analytics for fish health, automated feeding system, and automated water circulation. IoT-powered aquaculture solution.",
+        image: null,
+        tags: [
+            { name: "IoT", icon: iot },
+            { name: "Arduino", icon: arduino },
+            { name: "RaspberryPi", icon: raspberrypi },
+            { name: "C++", icon: cpp },
+        ],
+        liveUrl: null,
+        githubUrl: null,
+    },
+    {
+        title: "Smart Home System",
+        description:
+            "Comprehensive IoT-powered smart home system focused on home automation, energy efficiency, security, and smart device integration for enhanced convenience.",
+        image: null,
+        tags: [
+            { name: "Smart Home", icon: null },
+            { name: "IoT", icon: iot },
+            { name: "Arduino", icon: arduino },
+            { name: "RaspberryPi", icon: raspberrypi },
+            { name: "C++", icon: cpp },
+        ],
+        liveUrl: null,
+        githubUrl: null,
+    },
+    {
+        title: "Recyclink",
+        description:
+            "Industrial company website. Designed and managed content, built with Astro 2. Optimized site structure and metadata for improved SEO.",
+        image: recyclink,
+        tags: [
+            { name: "Astro", icon: astro },
+            { name: "Frontend", icon: null },
+            { name: "Content Management", icon: null },
+            { name: "SEO", icon: null },
+        ],
+        liveUrl: "https://recyc-link.vercel.app/en/",
+        githubUrl: "https://github.com/zoasr/recyc-link",
+    },
+    {
+        title: "Machlist",
+        description:
+            "Industrial company website. Designed user interfaces and ensured content consistency across pages, built with Astro 2.",
+        image: machlist,
+        tags: [
+            { name: "Astro", icon: astro },
+            { name: "Frontend", icon: null },
+            { name: "UI/UX", icon: null },
+        ],
+        liveUrl: "https://machlist.vercel.app/en/",
+        githubUrl: "https://github.com/zoasr/machlist",
+    },
 ];
 ---
 
 <section
-	id="projects"
-	class="w-full py-16 md:py-24 bg-card border-b-2 border-border/60 relative isolate"
+    id="projects"
+    class="w-full py-16 md:py-24 bg-card border-b-2 border-border/60 relative isolate"
 >
-	<SectionBackground sectionId="projects" />
-	<div class="container mx-auto px-4">
-		<SectionHeading title="My Projects" sectionId="projects" />
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-			{
-				projects.map((project) => (
-					<div class="futuristic-card flex flex-col overflow-hidden rounded-lg group">
-						<div class="relative ">
-							{project.image !== null && (
-								<>
-									<img
-										src={project.image.src}
-										alt={project.title}
-										width={500}
-										height={300}
-										class="object-cover w-full transition-transform duration-500 group-hover:scale-105 aspect-[16/9]"
-									/>
-									<div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
-								</>
-							)}
-						</div>
-						<div class="p-6 flex flex-col flex-grow">
-							<h3
-								class="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors"
-								class:list={
-									project.image !== null
-										? "text-xl"
-										: "text-4xl"
-								}
-							>
-								{project.title}
-							</h3>
-							<p class="text-muted-foreground text-sm flex-grow mb-4">
-								{project.description}
-							</p>
-							<div class="mb-4 flex flex-wrap gap-2">
-								{project.tags.map((tag) => (
-									<span class="card-tag flex gap-1 text-[clamp(1rem,1vw,2rem)] items-center border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
-										{tag.icon && (
-											<tag.icon class="size-[clamp(0.6rem,1vw,1rem)]" />
-										)}
-										{tag.name}
-									</span>
-								))}
-							</div>
-						</div>
-						<div class="p-6 pt-0 mt-auto flex justify-end gap-4">
-							{project.githubUrl && (
-								<a
-									href={project.githubUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
-									aria-label={`${project.title} GitHub repository`}
-								>
-									<Icon
-										name="pixelarticons:github"
-										class="h-6 w-6"
-									/>
-								</a>
-							)}
-							{project.liveUrl && (
-								<a
-									href={project.liveUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
-									aria-label={`${project.title} live demo`}
-								>
-									<Icon
-										name="pixelarticons:external-link"
-										class={"h-6 w-6"}
-									/>
-								</a>
-							)}
-						</div>
-					</div>
-				))
-			}
-		</div>
-	</div>
+    <SectionBackground sectionId="projects" />
+    <div class="container mx-auto px-4">
+        <SectionHeading title="My Projects" sectionId="projects" />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                projects.map((project) => (
+                    <div class="futuristic-card flex flex-col overflow-hidden rounded-lg group">
+                        <div class="relative ">
+                            {project.image !== null && (
+                                <>
+                                    <img
+                                        src={project.image.src}
+                                        alt={project.title}
+                                        width={500}
+                                        height={300}
+                                        class="object-cover w-full transition-transform duration-500 group-hover:scale-105 aspect-[16/9]"
+                                    />
+                                    <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
+                                </>
+                            )}
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3
+                                class="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors"
+                                class:list={
+                                    project.image !== null
+                                        ? "text-xl"
+                                        : "text-4xl"
+                                }
+                            >
+                                {project.title}
+                            </h3>
+                            <p class="text-muted-foreground text-sm flex-grow mb-4">
+                                {project.description}
+                            </p>
+                            <div class="mb-4 flex flex-wrap gap-2">
+                                {project.tags.map((tag) => (
+                                    <span class="card-tag flex gap-1 text-[clamp(1rem,1vw,2rem)] items-center border-border/20 border-1 px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full hover:bg-primary/20 transition-colors cursor-default">
+                                        {tag.icon && (
+                                            <tag.icon class="size-[clamp(0.6rem,1vw,1rem)]" />
+                                        )}
+                                        {tag.name}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 mt-auto flex justify-end gap-4">
+                            {project.githubUrl && (
+                                <a
+                                    href={project.githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
+                                    aria-label={`${project.title} GitHub repository`}
+                                >
+                                    <Icon
+                                        name="pixelarticons:github"
+                                        class="h-6 w-6"
+                                    />
+                                </a>
+                            )}
+                            {project.liveUrl && (
+                                <a
+                                    href={project.liveUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110"
+                                    aria-label={`${project.title} live demo`}
+                                >
+                                    <Icon
+                                        name="pixelarticons:external-link"
+                                        class={"h-6 w-6"}
+                                    />
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </section>
 
 <style>
-	.card-tag {
-		box-shadow: inset 0 0 0 1px
-			color-mix(in hsl, var(--primary) 10%, transparent);
-	}
-	.card-tag:hover {
-		box-shadow: inset 0 -1px 0 1px color-mix(in hsl, var(--primary) 20%, transparent);
-	}
+    .card-tag {
+        box-shadow: inset 0 0 0 1px
+            color-mix(in hsl, var(--primary) 10%, transparent);
+    }
+    .card-tag:hover {
+        box-shadow: inset 0 -1px 0 1px
+            color-mix(in hsl, var(--primary) 20%, transparent);
+    }
 </style>
 
 <script>
-	import { gsap } from "gsap";
-	import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-	gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-	//stagger animation of cards on section scroll
+    //stagger animation of cards on section scroll
 
-	gsap.from(`section#projects .futuristic-card`, {
-		x: -100,
-		duration: 1,
-		ease: "back.out",
-		stagger: 0.2,
-		opacity: 0,
-		scrollTrigger: {
-			trigger: "section#projects .grid",
-			toggleActions: "restart none none reverse",
-			start: "top 80%",
-			end: "bottom 20%",
-		},
-	});
+    gsap.from(`section#projects .futuristic-card`, {
+        x: -100,
+        duration: 1,
+        ease: "back.out",
+        stagger: 0.2,
+        opacity: 0,
+        scrollTrigger: {
+            trigger: "section#projects .grid",
+            toggleActions: "restart none none reverse",
+            start: "top 80%",
+            end: "bottom 20%",
+        },
+    });
 </script>

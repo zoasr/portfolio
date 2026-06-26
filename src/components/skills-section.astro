@@ -24,200 +24,225 @@ import supabase from "@/images/supabase.svg";
 import git from "@/images/git.svg";
 import github from "@/images/github.svg";
 import tanstack from "@/images/tanstack.svg";
+import hono from "@/images/hono.svg";
+import trpc from "@/images/trpc.svg";
+import expo from "@/images/expo.svg";
 import SectionHeading from "./SectionHeading.astro";
 import SectionBackground from "./section-background.astro";
 
 const skillCategories = [
-	{
-		title: "Languages & Core Concepts",
-		icon: {
-			name: "pixelarticons:code",
-			class: "h-8 w-8 text-primary",
-		},
-		skills: [
-			{
-				name: "HTML",
-				icon: html,
-			},
-			{
-				name: "CSS",
-				icon: css,
-			},
-			{
-				name: "JavaScript (ES6+)",
-				icon: js,
-			},
-			{
-				name: "TypeScript",
-				icon: ts,
-			},
-			{
-				name: "Python",
-				icon: py,
-			},
-			{
-				name: "C",
-				icon: c,
-			},
-			{
-				name: "C++",
-				icon: cpp,
-			},
-			{
-				name: "PHP",
-				icon: php,
-			},
-			{
-				name: "OOP",
-				icon: oop,
-			},
-		],
-	},
-	{
-		title: "Frontend Frameworks & Libraries",
-		icon: {
-			name: "pixelarticons:card-stack",
-			class: "h-8 w-8 text-primary",
-		},
-		skills: [
-			{
-				name: "React.js",
-				icon: react,
-			},
-			{
-				name: "Next.js",
-				icon: nextjs,
-			},
-			{
-				name: "Svelte (SvelteKit)",
-				icon: svelte,
-			},
-			{
-				name: "Solid.js",
-				icon: solid,
-			},
-			{
-				name: "Astro",
-				icon: astro,
-			},
-			{
-				name: "Vite",
-				icon: vite,
-			},
-			{
-				name: "TanStack (Router, Query, Start)",
-				icon: tanstack,
-			},
-		],
-	},
-	{
-		title: "Styling & Creative Coding",
-		icon: {
-			name: "streamline-pixel:design-color-palette-sample",
-			class: "h-8 w-8 text-primary",
-		},
-		skills: [
-			{
-				name: "TailwindCSS",
-				icon: tailwind,
-			},
-			{
-				name: "p5.js",
-				icon: p5,
-			},
-		],
-	},
-	{
-		title: "Backend, Databases & Tools",
-		icon: {
-			name: "streamline-pixel:coding-apps-websites-database",
-			class: "h-8 w-8 text-primary",
-		},
-		skills: [
-			{
-				name: "Node.js",
-				icon: nodejs,
-			},
-			{
-				name: "MySQL",
-				icon: mysql,
-			},
-			{
-				name: "PostgreSQL",
-				icon: postgresql,
-			},
-			{
-				name: "Supabase",
-				icon: supabase,
-			},
-			{
-				name: "Git",
-				icon: git,
-			},
-			{
-				name: "GitHub",
-				icon: github,
-			},
-		],
-	},
+    {
+        title: "Languages & Core Concepts",
+        icon: {
+            name: "pixelarticons:code",
+            class: "h-8 w-8 text-primary",
+        },
+        skills: [
+            {
+                name: "HTML",
+                icon: html,
+            },
+            {
+                name: "CSS",
+                icon: css,
+            },
+            {
+                name: "JavaScript (ES6+)",
+                icon: js,
+            },
+            {
+                name: "TypeScript",
+                icon: ts,
+            },
+            {
+                name: "Python",
+                icon: py,
+            },
+            {
+                name: "C",
+                icon: c,
+            },
+            {
+                name: "C++",
+                icon: cpp,
+            },
+            {
+                name: "PHP",
+                icon: php,
+            },
+            {
+                name: "SQL",
+                icon: null,
+            },
+            {
+                name: "OOP",
+                icon: oop,
+            },
+        ],
+    },
+    {
+        title: "Frontend Frameworks & Libraries",
+        icon: {
+            name: "pixelarticons:card-stack",
+            class: "h-8 w-8 text-primary",
+        },
+        skills: [
+            {
+                name: "React.js",
+                icon: react,
+            },
+            {
+                name: "Next.js",
+                icon: nextjs,
+            },
+            {
+                name: "Svelte (SvelteKit)",
+                icon: svelte,
+            },
+            {
+                name: "Solid.js",
+                icon: solid,
+            },
+            {
+                name: "Astro",
+                icon: astro,
+            },
+            {
+                name: "Vite",
+                icon: vite,
+            },
+            {
+                name: "TanStack (Router, Query, Start)",
+                icon: tanstack,
+            },
+            {
+                name: "React Native",
+                icon: react,
+            },
+            {
+                name: "Expo",
+                icon: expo,
+            },
+        ],
+    },
+    {
+        title: "Styling & Creative Coding",
+        icon: {
+            name: "streamline-pixel:design-color-palette-sample",
+            class: "h-8 w-8 text-primary",
+        },
+        skills: [
+            {
+                name: "TailwindCSS",
+                icon: tailwind,
+            },
+            {
+                name: "p5.js",
+                icon: p5,
+            },
+        ],
+    },
+    {
+        title: "Backend, Databases & Tools",
+        icon: {
+            name: "streamline-pixel:coding-apps-websites-database",
+            class: "h-8 w-8 text-primary",
+        },
+        skills: [
+            {
+                name: "Node.js",
+                icon: nodejs,
+            },
+            {
+                name: "Hono",
+                icon: hono,
+            },
+            {
+                name: "tRPC",
+                icon: trpc,
+            },
+            {
+                name: "MySQL",
+                icon: mysql,
+            },
+            {
+                name: "PostgreSQL",
+                icon: postgresql,
+            },
+            {
+                name: "Supabase",
+                icon: supabase,
+            },
+            {
+                name: "Git",
+                icon: git,
+            },
+            {
+                name: "GitHub",
+                icon: github,
+            },
+        ],
+    },
 ];
 ---
 
 <section
-	id="skills"
-	class="w-full py-16 md:py-24 border-b-2 border-border/60 relative isolate"
+    id="skills"
+    class="w-full py-16 md:py-24 border-b-2 border-border/60 relative isolate"
 >
-	<SectionBackground sectionId="skills" />
-	<div class="container mx-auto px-4">
-		<SectionHeading title="My Tech Skills" sectionId="skills" />
-		<div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
-			{
-				skillCategories.map((category) => (
-					<div class="futuristic-card p-6 rounded-lg">
-						<div class="flex items-center gap-4 mb-4">
-							<Icon
-								name={category.icon.name}
-								class={category.icon.class}
-							/>
-							<h3 class="text-xl font-semibold text-foreground">
-								{category.title}
-							</h3>
-						</div>
-						<div class="flex flex-wrap gap-2">
-							{category.skills.map((skill) => (
-								<>
-									<span class="flex gap-1 px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-md hover:bg-primary/20 transition-colors cursor-default">
-										<skill.icon class="h-6 w-6" />
-										{skill.name}
-									</span>
-								</>
-							))}
-						</div>
-					</div>
-				))
-			}
-		</div>
-	</div>
+    <SectionBackground sectionId="skills" />
+    <div class="container mx-auto px-4">
+        <SectionHeading title="My Tech Skills" sectionId="skills" />
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8">
+            {
+                skillCategories.map((category) => (
+                    <div class="futuristic-card p-6 rounded-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <Icon
+                                name={category.icon.name}
+                                class={category.icon.class}
+                            />
+                            <h3 class="text-xl font-semibold text-foreground">
+                                {category.title}
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            {category.skills.map((skill) => (
+                                <>
+                                    <span class="flex gap-1 px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-md hover:bg-primary/20 transition-colors cursor-default">
+                                        {skill.icon && (
+                                            <skill.icon class="h-6 w-6" />
+                                        )}
+                                        {skill.name}
+                                    </span>
+                                </>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </section>
 
 <script>
-	import { gsap } from "gsap";
-	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	gsap.registerPlugin(ScrollTrigger);
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
 
-	//stagger animation of cards on section scroll
+    //stagger animation of cards on section scroll
 
-	gsap.from(`section#skills .futuristic-card`, {
-		x: -100,
-		duration: 1,
-		ease: "back.out",
-		stagger: 0.2,
-		opacity: 0,
-		scrollTrigger: {
-			trigger: "section#skills .grid",
-			toggleActions: "restart resume none reverse",
-			start: "top 80%",
-			end: "bottom 20%",
-		},
-	});
+    gsap.from(`section#skills .futuristic-card`, {
+        x: -100,
+        duration: 1,
+        ease: "back.out",
+        stagger: 0.2,
+        opacity: 0,
+        scrollTrigger: {
+            trigger: "section#skills .grid",
+            toggleActions: "restart resume none reverse",
+            start: "top 80%",
+            end: "bottom 20%",
+        },
+    });
 </script>
