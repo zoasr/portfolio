@@ -1,7 +1,5 @@
 import { For } from "solid-js";
 import { createStore } from "solid-js/store";
-import type { Theme } from "./Header.astro";
-import ThemeSwitcher from "./theme-switcher";
 
 export const [menuStore, setMenuStore] = createStore({
 	isOpen: false,
@@ -27,16 +25,13 @@ export const MenuToggle = ({ open, close }: any) => {
 	);
 };
 
-export const MobileMenu = (props: {
-	navItems: { href: string; label: string }[];
-	theme: Theme;
-}) => {
+export const MobileMenu = (props: { navItems: { href: string; label: string }[] }) => {
 	return (
 		<div
 			class="md:hidden max-h-fit backdrop-blur-2xl border-t border-border/40 transition-all duration-200"
 			classList={{
 				"h-0 opacity-0 pointer-events-none": !menuStore.isOpen,
-				"h-[350px] opacity-100 pointer-events-auto": menuStore.isOpen,
+				"h-[290px] opacity-100 pointer-events-auto": menuStore.isOpen,
 			}}
 		>
 			<nav class="flex flex-col items-stretch gap-1 p-4">
@@ -55,9 +50,6 @@ export const MobileMenu = (props: {
 						</a>
 					)}
 				</For>
-				<span class="text-muted-foreground transition-colors hover:text-primary hover:bg-background w-full text-center py-3 rounded-md text-base">
-					<ThemeSwitcher theme={props.theme as Theme} />
-				</span>
 			</nav>
 		</div>
 	);

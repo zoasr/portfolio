@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 import Logo from "@/images/logo.svg";
 import { MenuToggle, MobileMenu } from "./menu";
-import ThemeSwitcher from "./theme-switcher";
 
 const navItems = [
 	{ href: "/#about", label: "About" },
@@ -11,27 +10,6 @@ const navItems = [
 	{ href: "/#experience", label: "Experience" },
 	{ href: "/about", label: "Details" },
 ];
-const themeLabels = {
-	light: "Light",
-	dark: "Dark",
-	rosey: "Rosey",
-	system: "System",
-};
-
-const themes = [
-	{ name: "light", label: "Light", iconname: "pixelarticons:sun-alt" },
-	{ name: "dark", label: "Dark", iconname: "pixelarticons:moon" },
-	{ name: "rosey", label: "Rosey", iconname: "pixelarticons:moon" },
-	{
-		name: "system",
-		label: "System",
-		iconname: "pixelarticons:device-laptop",
-	},
-];
-
-export type Theme = keyof typeof themeLabels;
-
-const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 ---
 
 <header
@@ -59,40 +37,6 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 				))
 			}
 		</nav>
-		<span class="md:inline hidden">
-			<noscript>
-				<style>
-					noscript {
-						display: contents;
-					}
-				</style>
-				<div
-					id="themeselector"
-					class="flex gap-2 items-center justify-center flex-wrap"
-					role="radiogroup"
-				>
-					{
-						themes.map((theme) => (
-							<label
-								role="radio"
-								class="has-checked:bg-primary text-xs has-checked:text-accent cursor-pointer p-2 rounded-md flex gap-2 items-center justify-center flex-wrap"
-							>
-								<Icon name={theme.iconname} class="inline" />
-								<span>{theme.label}</span>
-								<input
-									tabindex="0"
-									class="sr-only"
-									data-theme={theme.name}
-									type="radio"
-									name="theme"
-								/>
-							</label>
-						))
-					}
-				</div>
-			</noscript>
-			<ThemeSwitcher client:only theme={theme} />
-		</span>
 		<noscript>
 			<label class="text-primary md:hidden cursor-pointer">
 				<svg
@@ -142,34 +86,10 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 						</a>
 					))
 				}
-				<div
-					id="themeselector"
-					class="flex gap-4 items-center justify-center"
-					role="radiogroup"
-				>
-					{
-						themes.map((theme) => (
-							<label
-								role="radio"
-								class="has-checked:bg-primary text-xs has-checked:text-accent cursor-pointer p-2 rounded-md flex gap-2 items-center"
-							>
-								<Icon name={theme.iconname} class="inline" />
-								<span>{theme.label}</span>
-								<input
-									tabindex="0"
-									class="sr-only"
-									data-theme={theme.name}
-									type="radio"
-									name="theme"
-								/>
-							</label>
-						))
-					}
-				</div>
 			</nav>
 		</div>
 	</noscript>
-	<MobileMenu client:only navItems={navItems} theme={theme} />
+	<MobileMenu client:only navItems={navItems} />
 </header>
 
 <script>
@@ -213,6 +133,6 @@ const theme: Theme = Astro.cookies.get("theme")?.value as Theme;
 
 <style>
 	header:has(input[name="menutoggle"]:checked) #mobile-nav-menu {
-		@apply h-[350px] opacity-100 pointer-events-auto;
+		@apply h-[290px] opacity-100 pointer-events-auto;
 	}
 </style>

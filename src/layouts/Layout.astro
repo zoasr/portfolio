@@ -10,7 +10,6 @@ interface Props {
 
 const { title }: Props = Astro.props;
 
-const theme = Astro.cookies.get("theme")?.value;
 const squareOffset = 1;
 const radius = 2;
 const path = [
@@ -29,7 +28,7 @@ const path = [
 const GOOGLE_SITE_VERIFICATION = import.meta.env.GOOGLE_SITE_VERIFICATION;
 ---
 
-<html lang="en" data-theme={theme === "system" ? "" : theme}>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
@@ -51,7 +50,7 @@ const GOOGLE_SITE_VERIFICATION = import.meta.env.GOOGLE_SITE_VERIFICATION;
             content="Hi, I'm zoasr, i design, build and animate web applications and websites"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://zoasr-portfolio.pages.dev/" />
+        <meta property="og:url" content="https://zoasr.vercel.app/" />
         <meta property="og:image" content="/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="zoasr's Portfolio" />
